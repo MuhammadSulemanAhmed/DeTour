@@ -17,12 +17,10 @@
         android:layout_marginTop="32dp" />
 
     <ImageView
-        android:id="@+id/button"
+        android:id="@+id/imWeather"
         android:layout_width="110dp"
         android:layout_height="100dp"
-        android:layout_above="@+id/textView2"
-        android:layout_alignLeft="@+id/pager"
-        android:layout_alignStart="@+id/pager"
+        android:layout_marginTop="225dp"
         android:layout_marginLeft="42dp"
         android:layout_marginStart="42dp"
         android:src="@drawable/weather_icon" />
@@ -31,76 +29,63 @@
         android:id="@+id/button1"
         android:layout_width="110dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/pager"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="6dp"
-        android:layout_toEndOf="@+id/button"
-        android:layout_toRightOf="@+id/button"
+   android:layout_marginTop="225dp"
+        android:layout_marginLeft="210dp"
         android:src="@drawable/hotel_icon" />
 
     <ImageView
         android:id="@+id/button2"
         android:layout_width="110dp"
         android:layout_height="100dp"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_alignTop="@+id/button3"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
+        android:layout_marginTop="360dp"
+       android:layout_marginLeft="210dp"
         android:src="@drawable/trip_icon" />
 
     <ImageView
-        android:id="@+id/button3"
+        android:id="@+id/map_im"
         android:layout_width="110dp"
         android:layout_height="100dp"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="360dp"
+        android:layout_marginLeft="45dp"
         android:src="@drawable/map" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button"
-        android:layout_below="@+id/button1"
+       android:layout_marginTop="330dp"
+        android:layout_marginLeft="45dp"
         android:text="Weather" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1"
-        android:layout_below="@+id/button1"
+        android:layout_marginTop="330dp"
+        android:layout_marginLeft="210dp"
         android:text="Hotel's" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:layout_below="@+id/button3"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="455dp"
         android:text="Map" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_below="@+id/button2"
+        android:layout_marginTop="455dp"
+        android:layout_marginLeft="210dp"
         android:text="TripExpense" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="110dp"
         android:layout_height="100dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="475dp"
         android:layout_marginRight="80dp"
         android:layout_marginLeft="45dp"
         app:srcCompat="@drawable/placeholder" />
@@ -110,26 +95,23 @@
         android:layout_width="110dp"
         android:layout_height="100dp"
         android:layout_marginTop="470dp"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5"
+        android:layout_marginLeft="210dp"
         app:srcCompat="@drawable/location" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView2"
-        android:layout_alignStart="@+id/imageView2"
-        android:layout_below="@+id/imageView2"
+        android:layout_marginTop="575dp"
+        android:layout_marginLeft="55dp"
         android:text="Places" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView3"
-        android:layout_alignStart="@+id/imageView3"
-        android:layout_below="@+id/imageView3"
+       android:layout_marginLeft="210dp"
+        android:layout_marginTop="575dp"
         android:text="Location" />
 
 </RelativeLayout>

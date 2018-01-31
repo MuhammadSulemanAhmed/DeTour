@@ -1,4 +1,4 @@
-package com.example.suleman_pc.detour;
+package com.example.suleman_pc.detour.Model;
 
 /**
  * Created by suleman-pc on 12/13/2017.

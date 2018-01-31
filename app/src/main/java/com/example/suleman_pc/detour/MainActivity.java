@@ -1,5 +1,6 @@
 package com.example.suleman_pc.detour;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+
+import com.example.suleman_pc.detour.Adapter.SlidingImage_Adapter;
+import com.example.suleman_pc.detour.Model.ImageModel;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -28,6 +33,9 @@ public class MainActivity extends AppCompatActivity
     private int[] myImageList = new int[]{R.drawable.harley2, R.drawable.benz2,
             R.drawable.benz2,R.drawable.benz2
             ,R.drawable.benz2,R.drawable.benz2};
+    ImageView imMap;
+    ImageView imWeather;
+
 
 
     @Override
@@ -57,8 +65,29 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         imageModelArrayList = new ArrayList<>();
         imageModelArrayList = populateList();
-
         init();
+       //clicklistner for map
+        imMap=(ImageView)findViewById(R.id.map_im);
+        imMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(MainActivity.this,MapsActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        //clicklistner for Weather
+        imWeather=(ImageView)findViewById(R.id.imWeather);
+        imWeather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(MainActivity.this,WeatherActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
     private ArrayList<ImageModel> populateList(){
 
