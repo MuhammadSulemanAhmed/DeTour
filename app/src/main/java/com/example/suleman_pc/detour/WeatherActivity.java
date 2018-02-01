@@ -21,6 +21,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.suleman_pc.detour.Common.Api_Interface;
 import com.example.suleman_pc.detour.Common.Common;
 import com.example.suleman_pc.detour.Helper.Helper;
@@ -98,15 +100,18 @@ Button searchbtn,crrntLoc;
         txtsearch.setInputType(InputType.TYPE_CLASS_TEXT);
         txtsearch.setMaxLines(1);
         txtsearch.setSingleLine(true);
-        city=txtsearch.toString();
+        city=txtsearch.getText().toString();
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                EventBus.getDefault().post(city);
-
-
-
-                new GetWeather().execute(Common.apiRequestCity(txtsearch.getText().toString()));
+//Message Show if null
+//            if(city==null) {
+//                Toast.makeText(getApplicationContext(), "Please enter the city name", Toast.LENGTH_SHORT).show();
+//            }else
+//            {
+                new GetWeather().execute(Common.apiRequestCity(city));
+//            }
 
 //                Retrofit retrofit = new Retrofit.Builder()
 ////                        .baseUrl("https://gist.githubusercontent.com/")

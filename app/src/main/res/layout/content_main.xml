@@ -15,7 +15,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp" />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></LinearLayout>
     <ImageView
         android:id="@+id/imWeather"
         android:layout_width="110dp"
@@ -24,6 +26,28 @@
         android:layout_marginLeft="42dp"
         android:layout_marginStart="42dp"
         android:src="@drawable/weather_icon" />
+    <ImageView
+        android:id="@+id/butto"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginLeft="210dp"
+        android:src="@drawable/hotel_icon" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:layout_marginLeft="210dp"
+        android:text="Hotel's" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:layout_marginLeft="45dp"
+        android:text="Weather" />
+
 
     <ImageView
         android:id="@+id/button1"
@@ -49,21 +73,9 @@
         android:layout_marginLeft="45dp"
         android:src="@drawable/map" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:layout_marginTop="330dp"
-        android:layout_marginLeft="45dp"
-        android:text="Weather" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
-        android:layout_marginLeft="210dp"
-        android:text="Hotel's" />
+
+
 
     <TextView
         android:id="@+id/textView4"
@@ -71,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="55dp"
         android:layout_marginTop="455dp"
-        android:text="Map" />
+        android:text="Location" />
 
     <TextView
         android:id="@+id/textView5"
@@ -112,6 +124,6 @@
         android:layout_height="wrap_content"
        android:layout_marginLeft="210dp"
         android:layout_marginTop="575dp"
-        android:text="Location" />
+        android:text="Map" />
 
 </RelativeLayout>

@@ -1,81 +1,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#4169e1">
-
-<EditText
-    android:layout_width="200dp"
-    android:layout_height="25dp"
-    android:layout_marginLeft="120dp"
-    android:layout_marginTop="15dp"
-    android:id="@+id/editText5"
-    android:background="#f5fffa"/>
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="50dp"
-        android:id="@+id/editText6"
-        android:backgroundTint="#f5fffa"
-        android:background="#f5fffa"/>
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--android:background="#4169e1">-->
+    <Button
+        android:id="@+id/mapsearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Search"/>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="370dp"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        tools:context="com.example.suleman_pc.detour.MapsActivity" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/editText5"
-        android:text="Start Point:" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/editText6"
-        android:text="Destination Point :" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/map"
-       android:layout_marginLeft="10dp"
-        android:background="@drawable/map_car"
-        android:elevation="2dp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/map"
-        android:layout_marginLeft="80dp"
-
-        android:background="@drawable/map_walk"/>
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/map"
-        android:layout_marginLeft="150dp"
-
-
-        android:background="@drawable/map_bus" />
-
+        tools:context="com.example.suleman_pc.detour.LocationMapsActivity" />
 </RelativeLayout>
