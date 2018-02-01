@@ -2,6 +2,7 @@ package com.example.suleman_pc.detour;
 
 import android.*;
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -17,11 +18,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private ActionBar supportActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -61,5 +64,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
+    }
+
+    public ActionBar getSupportActionBar() {
+        return supportActionBar;
     }
 }

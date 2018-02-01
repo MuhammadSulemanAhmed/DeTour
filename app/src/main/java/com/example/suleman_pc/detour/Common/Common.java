@@ -17,6 +17,12 @@ public class Common {
         sb.append(String.format("?lat=%s&lon=%s&APPID=%s&units=metric",lat,lng,API_KEY));
         return sb.toString();
     }
+    @NonNull
+    public static String apiRequestCity(String cityName){
+        StringBuilder sb = new StringBuilder(API_LINK);
+        sb.append(String.format("?q=%s&APPID=%s&units=metric",cityName,API_KEY));
+        return sb.toString();
+    }
 
     public static String unixTimeStampToDateTime(double unixTimeStamp){
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");

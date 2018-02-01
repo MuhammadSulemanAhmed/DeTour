@@ -1,6 +1,5 @@
 package com.example.suleman_pc.detour;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -13,29 +12,38 @@ import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.example.suleman_pc.detour.Common.Api_Interface;
 import com.example.suleman_pc.detour.Common.Common;
 import com.example.suleman_pc.detour.Helper.Helper;
 import com.example.suleman_pc.detour.Model.OpenWeatherMap;
+import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONObject;
+import org.greenrobot.eventbus.EventBus;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class WeatherActivity extends AppCompatActivity implements LocationListener{
     TextView txtCity, txtLastUpdate, txtDescription, txtHumidity, txtTime, txtCelsius;
     ImageView imageView;
-
+EditText txtsearch;
+String city;
+Button searchbtn,crrntLoc;
     LocationManager locationManager;
     String provider;
     static double lat, lng;
@@ -47,7 +55,11 @@ public class WeatherActivity extends AppCompatActivity implements LocationListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Control
+        crrntLoc=(Button)findViewById(R.id.current_loc);
+        txtsearch=(EditText)findViewById(R.id.editsearch);
+        searchbtn=(Button)findViewById(R.id.btnsearch);
         txtCity = (TextView) findViewById(R.id.txtCity);
         txtLastUpdate = (TextView) findViewById(R.id.txtLastUpdate);
         txtDescription = (TextView) findViewById(R.id.txtDescription);
@@ -74,10 +86,61 @@ public class WeatherActivity extends AppCompatActivity implements LocationListen
         Location location = locationManager.getLastKnownLocation(provider);
         if (location == null)
             Log.e("TAG", "No Location");
+        crrntLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtsearch.setText("");
+                new GetWeather().execute(Common.apiRequest(String.valueOf(lat),String.valueOf(lng)));
 
+            }
+        });
+        txtsearch=(EditText)findViewById(R.id.editsearch);
+        txtsearch.setInputType(InputType.TYPE_CLASS_TEXT);
+        txtsearch.setMaxLines(1);
+        txtsearch.setSingleLine(true);
+        city=txtsearch.toString();
+        searchbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                EventBus.getDefault().post(city);
+
+
+
+                new GetWeather().execute(Common.apiRequestCity(txtsearch.getText().toString()));
+
+//                Retrofit retrofit = new Retrofit.Builder()
+////                        .baseUrl("https://gist.githubusercontent.com/")
+//                       // .addConverterFactory(SimpleXmlConverterFactory.create())
+//                        .build();
+//
+//                try {
+//                    Api_Interface gistService = retrofit.create(Api_Interface.class);
+//
+//                    Response<OpenWeatherMap> response = gistService.getGithubGist().execute();
+//                    OpenWeatherMap task = response.body();
+//                    System.out.println("Request done!");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+
+            }
+        });
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
     @Override
     protected void onPause() {
         super.onPause();
@@ -113,9 +176,12 @@ public class WeatherActivity extends AppCompatActivity implements LocationListen
         }
         //change
         locationManager.requestSingleUpdate(provider,this, Looper.myLooper());
+//        DataLongOperationAsynchTask ob;
     }
+
     @Override
     public void onLocationChanged(Location location) {
+
         lat = location.getLatitude();
         lng = location.getLongitude();
 
