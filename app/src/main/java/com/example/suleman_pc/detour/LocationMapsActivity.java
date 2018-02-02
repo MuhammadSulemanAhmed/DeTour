@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,30 +20,34 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class LocationMapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
+EditText start_point,end_point;
+Button btn_search;
     private GoogleMap mMap;
-//    private Button btn=findViewById(R.id.mapsearch);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
+        start_point=findViewById(R.id.et_start);
+        end_point=findViewById(R.id.et_end);
+        btn_search=findViewById(R.id.mapsearch);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Uri gmmIntentUri = Uri.parse("google.navigation:q=Taronga+Zoo,+Sydney+Australia");
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Uri gmmIntentUri = Uri.parse("google.navigation:q="+end_point.getText().toString()+",Pakistan");
 //                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
 //                mapIntent.setPackage("com.google.android.apps.maps");
 //                startActivity(mapIntent);
-//            }
-//        });
-
+//                Uri gmmIntentUri = Uri.parse("geo:0,0?q=restaurants");
+//                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//                mapIntent.setPackage("com.google.android.apps.maps");
+//                startActivity(mapIntent);
+            }
+        });
     }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -57,13 +62,10 @@ public class LocationMapsActivity extends FragmentActivity implements OnMapReady
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},0);
             return;
         }
-
         mMap.setMyLocationEnabled(true);
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(30.3753, 69.3451);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Pakistan"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng pakistan = new LatLng(30.3753, 69.3451);
+        mMap.addMarker(new MarkerOptions().position(pakistan).title("Marker in Pakistan"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(pakistan));
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-
     }
 }

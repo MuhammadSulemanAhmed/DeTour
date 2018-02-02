@@ -8,6 +8,7 @@
     tools:context="com.example.suleman_pc.detour.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="400dp"
@@ -15,9 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></LinearLayout>
+
     <ImageView
         android:id="@+id/imWeather"
         android:layout_width="110dp"
@@ -48,15 +47,6 @@
         android:layout_marginLeft="45dp"
         android:text="Weather" />
 
-
-    <ImageView
-        android:id="@+id/button1"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-   android:layout_marginTop="225dp"
-        android:layout_marginLeft="210dp"
-        android:src="@drawable/hotel_icon" />
-
     <ImageView
         android:id="@+id/button2"
         android:layout_width="110dp"
@@ -73,17 +63,13 @@
         android:layout_marginLeft="45dp"
         android:src="@drawable/map" />
 
-
-
-
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="55dp"
         android:layout_marginTop="455dp"
-        android:text="Location" />
+        android:text="Map and Location" />
 
     <TextView
         android:id="@+id/textView5"
@@ -102,13 +88,13 @@
         android:layout_marginLeft="45dp"
         app:srcCompat="@drawable/placeholder" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="470dp"
-        android:layout_marginLeft="210dp"
-        app:srcCompat="@drawable/location" />
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView3"-->
+        <!--android:layout_width="110dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_marginTop="470dp"-->
+        <!--android:layout_marginLeft="210dp"-->
+        <!--app:srcCompat="@drawable/location" />-->
 
     <TextView
         android:id="@+id/textView6"
@@ -118,12 +104,12 @@
         android:layout_marginLeft="55dp"
         android:text="Places" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:layout_marginLeft="210dp"
-        android:layout_marginTop="575dp"
-        android:text="Map" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView7"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+       <!--android:layout_marginLeft="210dp"-->
+        <!--android:layout_marginTop="575dp"-->
+        <!--android:text="Map" />-->
 
 </RelativeLayout>

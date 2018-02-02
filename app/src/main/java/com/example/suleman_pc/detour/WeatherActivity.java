@@ -58,6 +58,7 @@ Button searchbtn,crrntLoc;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Control
         crrntLoc=(Button)findViewById(R.id.current_loc);
         txtsearch=(EditText)findViewById(R.id.editsearch);
