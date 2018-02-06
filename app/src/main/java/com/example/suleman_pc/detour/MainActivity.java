@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
             ,R.drawable.benz2,R.drawable.benz2};
     ImageView imMap;
     ImageView imWeather;
+    ImageView trip_expense;
 
 
 
@@ -84,13 +85,23 @@ public class MainActivity extends AppCompatActivity
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(mapIntent);
+                     startActivity(mapIntent);
                 }
 
             }
         });
+        //clicklistner for Trip Expense
+        trip_expense=findViewById(R.id.trip_expense);
+        trip_expense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(MainActivity.this,TripExpenseActivity.class);
+                startActivity(intent);
+            }
+        });
         //clicklistner for Weather
-        imWeather=(ImageView)findViewById(R.id.imWeather);
+        imWeather= findViewById(R.id.imWeather);
         imWeather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
