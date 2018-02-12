@@ -1,6 +1,8 @@
-package com.example.suleman_pc.detour;
+package com.example.suleman_pc.detour.Adapter;
 
+import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,20 +11,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.suleman_pc.detour.R;
+import com.example.suleman_pc.detour.TripDetailActivity;
+import com.example.suleman_pc.detour.TripExpenseActivity;
+
+import java.util.Date;
+
 /**
  * Created by suleman-pc on 2/6/2018.
  */
 
-public class CustomAdapter extends BaseAdapter {
+public class GridViewAdapter extends BaseAdapter {
     String [] result;
     Context context;
     int [] imageId;
+
     private static LayoutInflater inflater=null;
-    public CustomAdapter(TripExpenseActivity mainActivity, String[] osNameList, int[] osImages) {
+    public GridViewAdapter(TripExpenseActivity mainActivity, String[] osNameList, int[] osImages) {
         // TODO Auto-generated constructor stub
         result=osNameList;
         context=mainActivity;
         imageId=osImages;
+
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -50,6 +60,7 @@ public class CustomAdapter extends BaseAdapter {
     {
         TextView os_text;
         ImageView os_img;
+
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -60,15 +71,16 @@ public class CustomAdapter extends BaseAdapter {
         rowView = inflater.inflate(R.layout.single_trip_grid, null);
         holder.os_text = rowView.findViewById(R.id.trip_name);
         holder.os_img = rowView.findViewById(R.id.os_images);
-
         holder.os_text.setText(result[position]);
-        holder.os_img.setImageResource(imageId[1]);
-
+        holder.os_img.setImageResource(imageId[position]);
         rowView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+//                Intent intent=new Intent(, TripDetailActivity.class);
+//
+                v.getContext().startActivity(new Intent(context,TripDetailActivity.class));
                 Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_SHORT).show();
             }
         });
