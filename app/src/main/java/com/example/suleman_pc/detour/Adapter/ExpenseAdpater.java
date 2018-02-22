@@ -1,13 +1,15 @@
-package com.example.suleman_pc.detour;
+package com.example.suleman_pc.detour.Adapter;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.example.suleman_pc.detour.Model.Expense;
+import com.example.suleman_pc.detour.R;
 
 import java.util.ArrayList;
 
@@ -18,11 +20,13 @@ import java.util.ArrayList;
 public class ExpenseAdpater extends ArrayAdapter<Expense> {
 
     private int listItemLayout;
+    private Intent intent;
 
     public ExpenseAdpater(Context context, int layoutId, ArrayList<Expense> itemList) {
         super(context, layoutId, itemList);
         listItemLayout = layoutId;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
@@ -34,21 +38,36 @@ public class ExpenseAdpater extends ArrayAdapter<Expense> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(listItemLayout, parent, false);
-            viewHolder.item = (TextView) convertView.findViewById(R.id.item);
+            viewHolder.expenseName = (TextView) convertView.findViewById(R.id.expense_name);
+            viewHolder.expenseGiver = convertView.findViewById(R.id.expense_givenBy);
+            viewHolder.date = convertView.findViewById(R.id.expense_date);
+            viewHolder.amount = convertView.findViewById(R.id.given_amount);
             convertView.setTag(viewHolder); // view lookup cache stored in tag
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+//        Intent ii=Intent.getIntent();
 
         // Populate the data into the template view using the data object
-        viewHolder.item.setText(item.getTest());
+        viewHolder.expenseName.setText(item.getExpenseName());
+        viewHolder.expenseGiver.setText(item.getExpenseGiver());
+        viewHolder.date.setText(item.getExpenseDate());
+        viewHolder.amount.setText(item.getGivenAmount());
+
 
         // Return the completed view to render on screen
         return convertView;
     }
 
+    public Intent getIntent() {
+        return intent;
+    }
+
     // The ViewHolder, only one item for simplicity and demonstration purposes, you can put all the views inside a row of the list into this ViewHolder
     private static class ViewHolder {
-        TextView item;
+        TextView expenseName;
+        TextView expenseGiver;
+        TextView date;
+        TextView amount;
     }
 }

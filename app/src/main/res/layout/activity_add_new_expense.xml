@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:text="Expense name"/>
 <EditText
+    android:id="@+id/newExpenseName"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:hint="Enter Expense name"/>
@@ -23,14 +24,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter date"/>
+    <EditText
+        android:id="@+id/newExpenseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:hint="Date"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter the amount "/>
+        android:text="Enter the given_amount "/>
     <EditText
+        android:id="@+id/newExpenseAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Amount"
+        android:inputType="number"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expense Given by"/>
+    <EditText
+        android:id="@+id/newExpenseGiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Expense given by"/>
+    <Button
+        android:id="@+id/addNewExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Expense"/>
 </LinearLayout>
