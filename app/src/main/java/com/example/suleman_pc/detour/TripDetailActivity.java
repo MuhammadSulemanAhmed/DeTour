@@ -3,6 +3,7 @@ package com.example.suleman_pc.detour;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,11 +19,12 @@ public class TripDetailActivity extends AppCompatActivity {
 ListView listview;
 String name,date,amount,giver;
 ImageView addExpense;
+    AddNewExpenseDb cn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_detail);
-        AddNewExpenseDbHandler db=new AddNewExpenseDbHandler(this);
+//        AddNewExpenseDbHandler db=new AddNewExpenseDbHandler(this);
 //        ExpenseDatabaseHandler db=new ExpenseDatabaseHandler(this);
         // Initializing list view with the custom adapter
         ArrayList <Expense> itemList = new ArrayList<Expense>();
@@ -38,19 +40,26 @@ ImageView addExpense;
 //            date =(String) bundle.get("expensedate");
 //            giver =(String) bundle.get("expensegiver");
 //        }
-
+//        db.addExpense(new AddNewExpenseDb(name,date,giver,amount));
             // Populating list items
 //        for(int i=0; i<100; i++) {
 
 //            itemList.add(new Expense(name, giver, date, amount));
-
-
+//        List<AddNewExpenseDb> expenses=db.getAllExpense();
+//        for (AddNewExpenseDb cn : expenses) {
+//            String log = "Id"+cn.getId()+"name"+cn.getExpenseName()+"giver"+cn.getExpenseGiver()+"date"+cn.getExpenseDate()+"amount"+cn.getExpenseAmount();
+//            // Writing Contacts to log
+//            Log.d("Name: ", log);
 //        }
-        List<AddNewExpenseDb> expenses=db.getAllExpense();
-        for(AddNewExpenseDb ex: expenses)
-        {
-            itemList.add(new AddNewExpenseDb(ex.getId(),ex.getExpenseName(),ex.getExpenseGiver(),ex.getExpenseDate(),ex.getExpenseAmount()));
-        }
+
+
+        itemList.add(new Expense("name:","giver","date","amount"));
+//        }
+
+//        for(AddNewExpenseDb ex: expenses)
+//        {
+//            itemList.add(new Expense("name:"+ex.getExpenseName(),"giver"+ex.getExpenseGiver(),"date"+ex.getExpenseDate(),"amount"+ex.getExpenseAmount()));
+//        }
 
         addExpense=findViewById(R.id.addexpense);
         addExpense.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +75,19 @@ ImageView addExpense;
     }
 
         });
+        DatabaseHandler db = new DatabaseHandler(this);
+
+        // Reading all contacts
+        Log.d("Reading: ", "Reading all contacts..");
+        List<ExpenseDb> contacts = db.getAllContacts();
+
+        for (ExpenseDb cn : contacts) {
+            itemList.add(new Expense(""+cn.getName(),cn.getPhoneNumber(),"1245"+cn.getDate(),""));
+            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();
+            // Writing Contacts to log
+            Log.d("Name: ", log);
+        }
+
     }
 
     }

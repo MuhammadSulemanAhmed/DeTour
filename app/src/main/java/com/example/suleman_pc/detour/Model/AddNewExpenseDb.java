@@ -11,14 +11,14 @@ public class AddNewExpenseDb {
     private String expenseGiver;
     private String expenseAmount;
 
-    public AddNewExpenseDb(int id,String expenseDate,  String expenseName, String expenseGiver, String expenseAmount) {
+    public AddNewExpenseDb(int id,  String expenseName, String expenseGiver,String expenseDate, String expenseAmount) {
         ExpenseDate = expenseDate;
         this.id = id;
         this.expenseName = expenseName;
         this.expenseGiver = expenseGiver;
         this.expenseAmount = expenseAmount;
     }
-    public AddNewExpenseDb(String expenseDate,  String expenseName, String expenseGiver, String expenseAmount) {
+    public AddNewExpenseDb(  String expenseName, String expenseGiver,String expenseDate, String expenseAmount) {
         ExpenseDate = expenseDate;
         this.expenseName = expenseName;
         this.expenseGiver = expenseGiver;

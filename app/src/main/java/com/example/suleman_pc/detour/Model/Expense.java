@@ -6,15 +6,7 @@ package com.example.suleman_pc.detour.Model;
 
 public class Expense {
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    private int id;
 
     public String getExpenseName() {
         return expenseName;
