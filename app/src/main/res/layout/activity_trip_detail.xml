@@ -29,10 +29,23 @@
             android:src="@drawable/map_bus"/>
     </LinearLayout>
 
-    <ListView
+
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/list"></ListView>
+        android:layout_height="250dp"
+        android:id="@+id/scrollView"
+
+        >
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            ></ListView>
+    </ScrollView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

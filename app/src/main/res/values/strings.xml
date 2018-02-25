@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">DeTour</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_main"></string>
+    <string name="edit">Edit Expense</string>
+    <string name="delete">Delete Expense</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -21,4 +22,5 @@
     <string name="change_city" />
     <string name="open_weather_maps_app_id" />
     <string name="action_favorite" />
+
 </resources>

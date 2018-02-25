@@ -5,4 +5,14 @@
         android:icon="@mipmap/plus_add"
         android:title="Add new Trip"
        />
+    <item
+        android:id="@+id/Edit_Expense"
+        android:title="Edit Expense"
+        android:orderInCategory="100"
+        />
+    <item
+        android:title="Delete Expense"
+        android:id="@+id/Delete_Expense"
+        android:orderInCategory="100"
+        />
 </menu>
