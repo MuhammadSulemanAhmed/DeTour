@@ -3,6 +3,7 @@ package com.example.suleman_pc.detour;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,6 +27,10 @@ public class AddNewTripActivity extends AppCompatActivity {
             "Group",
 
     };
+    String[] name;
+    String date;
+    TextView tname;
+    Button add;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
@@ -35,11 +41,24 @@ public class AddNewTripActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_trip);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         spinnerDropDown =(Spinner)findViewById(R.id.spinner);
-
+tname=findViewById(R.id.trip_name);
+date=tname.getText().toString();
+name= new String[]{date};
+add=findViewById(R.id.add_new_trip);
+add.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(AddNewTripActivity.this,TripExpenseActivity.class);
+        String[] mystring=name;
+        intent.putExtra("name",mystring);
+        startActivity(intent);
+    }
+});
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.
                 R.layout.simple_spinner_dropdown_item , trip_type);
 
         spinnerDropDown.setAdapter(adapter);
+
 
         spinnerDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -63,6 +82,9 @@ public class AddNewTripActivity extends AppCompatActivity {
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
         showDate(year, month+1, day);
+
+
+
     }
     @SuppressWarnings("deprecation")
     public void setDate(View view) {

@@ -12,22 +12,20 @@ import com.example.suleman_pc.detour.Adapter.GridViewAdapter;
 public class TripExpenseActivity extends AppCompatActivity {
     GridView gridview;
 
-    public static String[] osNameList = {
+    public static String[] date = {
             "Murree",
-            "Nathia Gali",
-            "Lahore",
-            "Karachi",
-            "Sargodha",
-            "Islamabad",
-            "Rawalpindi",
-            "Kashmir",
+
     };
+    public static String[] osNameList={"murre"} ;
+
+
+
+
+
     public static int[] osImages = {
             R.drawable.bikess,
-    R.drawable.benz2,
- R.drawable.bikess,
-    R.drawable.bikess
-    ,R.drawable.bikess,R.drawable.bikess,R.drawable.bikess,R.drawable.bikess};
+   };
+
 
 
     @Override
@@ -35,8 +33,9 @@ public class TripExpenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_expense);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         gridview = (GridView) findViewById(R.id.customgrid);
-        gridview.setAdapter(new GridViewAdapter(this, osNameList, osImages));
+        gridview.setAdapter(new GridViewAdapter(this, osNameList, osImages,date));
 
     }
     @Override

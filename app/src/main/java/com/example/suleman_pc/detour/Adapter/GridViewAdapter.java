@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.suleman_pc.detour.R;
+import com.example.suleman_pc.detour.Trip;
 import com.example.suleman_pc.detour.TripDetailActivity;
 import com.example.suleman_pc.detour.TripExpenseActivity;
 
@@ -20,15 +22,17 @@ import java.util.Date;
 /**
  * Created by suleman-pc on 2/6/2018.
  */
-
-public class GridViewAdapter extends BaseAdapter {
-    String [] result;
+//BaseAdapter
+public class GridViewAdapter extends BaseAdapter{
+    String[]  result;
+    String[] date;
     Context context;
     int [] imageId;
 
     private static LayoutInflater inflater=null;
-    public GridViewAdapter(TripExpenseActivity mainActivity, String[] osNameList, int[] osImages) {
+    public GridViewAdapter(TripExpenseActivity mainActivity, String[] osNameList, int[] osImages, String[] datelist) {
         // TODO Auto-generated constructor stub
+        date=datelist;
         result=osNameList;
         context=mainActivity;
         imageId=osImages;
@@ -37,6 +41,7 @@ public class GridViewAdapter extends BaseAdapter {
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
+
 
     @Override
     public int getCount() {
@@ -60,6 +65,7 @@ public class GridViewAdapter extends BaseAdapter {
     {
         TextView os_text;
         ImageView os_img;
+        TextView date;
 
     }
     @Override
@@ -67,11 +73,12 @@ public class GridViewAdapter extends BaseAdapter {
         // TODO Auto-generated method stub
         Holder holder=new Holder();
         View rowView;
-
         rowView = inflater.inflate(R.layout.single_trip_grid, null);
         holder.os_text = rowView.findViewById(R.id.trip_name);
+        holder.date=rowView.findViewById(R.id.date);
         holder.os_img = rowView.findViewById(R.id.os_images);
         holder.os_text.setText(result[position]);
+        holder.date.setText(date[position]);
         holder.os_img.setImageResource(imageId[position]);
         rowView.setOnClickListener(new View.OnClickListener() {
 
