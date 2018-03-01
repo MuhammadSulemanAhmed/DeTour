@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent;
-                intent = new Intent(MainActivity.this,TripExpenseActivity.class);
+                intent = new Intent(MainActivity.this,TripsActivity.class);
                 startActivity(intent);
             }
         });

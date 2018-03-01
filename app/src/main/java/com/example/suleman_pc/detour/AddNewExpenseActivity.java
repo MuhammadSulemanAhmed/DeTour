@@ -1,11 +1,11 @@
 package com.example.suleman_pc.detour;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,11 +13,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.suleman_pc.detour.Helper.ExpenseDBHealper;
+
 /**
  * Created by suleman-pc on 2/20/2018.
  */
 
-public class ExpenseDb extends Activity {
+public class AddNewExpenseActivity extends AppCompatActivity{
     int from_Where_I_Am_Coming = 0;
   private ExpenseDBHealper mydb;
   TextView name;
@@ -29,6 +31,7 @@ public class ExpenseDb extends Activity {
     protected void onCreate(Bundle savedInstanceState){
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_add_new_expense);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       name=findViewById(R.id.newExpenseName);
       giver=findViewById(R.id.newExpenseGiver);
       date=findViewById(R.id.newExpenseDate);
@@ -114,7 +117,7 @@ public class ExpenseDb extends Activity {
                                         mydb.deleteExpense(id_To_Update);
                                         Toast.makeText(getApplicationContext(), "Deleted Successfully",
                                                 Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(),TripDetailActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(),TripDetailExpenseActivity.class);
                                         startActivity(intent);
                                     }
                                 })
@@ -140,7 +143,7 @@ public class ExpenseDb extends Activity {
                         giver.getText().toString(), date.getText().toString(),
                         amount.getText().toString())){
                     Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),TripDetailActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),TripDetailExpenseActivity.class);
                     startActivity(intent);
                 } else{
                     Toast.makeText(getApplicationContext(), "not Updated", Toast.LENGTH_SHORT).show();
@@ -154,7 +157,7 @@ public class ExpenseDb extends Activity {
                     Toast.makeText(getApplicationContext(), "not done",
                             Toast.LENGTH_SHORT).show();
                 }
-                Intent intent = new Intent(getApplicationContext(),TripDetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(),TripDetailExpenseActivity.class);
                 startActivity(intent);
             }
         }

@@ -52,11 +52,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".LocationMapsActivity" />
-        <activity android:name=".WeatherActivity" />
-        <activity android:name=".TripExpenseActivity" />
-        <activity android:name=".AddNewTripActivity" />
-        <activity android:name=".TripDetailActivity" />
-        <activity android:name=".ExpenseDb"/>
+        <activity android:name=".WeatherActivity"
+            android:label="Weather"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".TripDetailExpenseActivity"
+            android:label="Trip Detail"
+            android:parentActivityName=".TripsActivity"
+            >
+
+        </activity>
+       <activity android:name=".AddNewExpenseActivity"
+           android:label="Expense Detail"
+           android:parentActivityName=".TripDetailExpenseActivity"/>
+        <activity android:name=".AddNewTripActivity"/>
+        <activity android:name=".TripsActivity"
+            android:label="My Trips"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.suleman_pc.detour.Model.Expense;
+
 import com.example.suleman_pc.detour.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.suleman_pc.detour;
+package com.example.suleman_pc.detour.Helper;
 
 import android.content.ContentValues;
 import android.content.Context;

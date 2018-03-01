@@ -1,6 +1,5 @@
 package com.example.suleman_pc.detour;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
+import com.example.suleman_pc.detour.Helper.ExpenseDBHealper;
 
 import java.util.ArrayList;
 
-public class TripDetailActivity extends AppCompatActivity {
+public class TripDetailExpenseActivity extends AppCompatActivity {
 
 public final static String EXTRA_MESSAGE = "MESSAGE";
     private ListView obj;
@@ -26,6 +26,7 @@ public final static String EXTRA_MESSAGE = "MESSAGE";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_detail);
+
         mydb = new ExpenseDBHealper(this);
         ArrayList array_list = mydb.getAllExpenses();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array_list);
@@ -42,7 +43,7 @@ public final static String EXTRA_MESSAGE = "MESSAGE";
                 Bundle dataBundle = new Bundle();
                 dataBundle.putInt("id", id_To_Search);
 
-                Intent intent = new Intent(getApplicationContext(), ExpenseDb.class);
+                Intent intent = new Intent(getApplicationContext(), AddNewExpenseActivity.class);
 
                 intent.putExtras(dataBundle);
                 startActivity(intent);
@@ -65,7 +66,7 @@ public final static String EXTRA_MESSAGE = "MESSAGE";
             case R.id.item1:Bundle dataBundle = new Bundle();
                 dataBundle.putInt("id", 0);
 
-                Intent intent = new Intent(getApplicationContext(),ExpenseDb.class);
+                Intent intent = new Intent(getApplicationContext(),AddNewExpenseActivity.class);
                 intent.putExtras(dataBundle);
                 startActivity(intent);
                 return true;
