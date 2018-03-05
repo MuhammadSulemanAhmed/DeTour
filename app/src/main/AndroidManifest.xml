@@ -45,29 +45,38 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".LocationMapsActivity" />
+        <activity
+            android:name=".WeatherActivity"
+            android:label="Weather"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TripDetailExpenseActivity"
+            android:label="Trip Detail"
+            android:parentActivityName=".TripsActivity" />
+        <activity
+            android:name=".AddNewExpenseActivity"
+            android:label="Expense Detail"
+            android:parentActivityName=".TripDetailExpenseActivity" />
+        <activity android:name=".AddNewTripActivity" />
+        <activity
+            android:name=".TripsActivity"
+            android:label="My Trips"
+            android:parentActivityName=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LocationMapsActivity" />
-        <activity android:name=".WeatherActivity"
-            android:label="Weather"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".TripDetailExpenseActivity"
-            android:label="Trip Detail"
-            android:parentActivityName=".TripsActivity"
-            >
+        <activity android:name=".Splash_Activity">
 
         </activity>
-       <activity android:name=".AddNewExpenseActivity"
-           android:label="Expense Detail"
-           android:parentActivityName=".TripDetailExpenseActivity"/>
-        <activity android:name=".AddNewTripActivity"/>
-        <activity android:name=".TripsActivity"
-            android:label="My Trips"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ShowExpenseDetailActivity"
+            android:label="Expense Detail"
+            android:parentActivityName=".TripDetailExpenseActivity"></activity>
     </application>
 
 </manifest>

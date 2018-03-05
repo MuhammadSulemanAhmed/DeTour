@@ -245,7 +245,7 @@ public class AddNewTripActivity extends AppCompatActivity {
     private void addContact(){
         getValues();
 
-        db.addContacts(new TripModel(f_name, photo));
+        db.addTrips(new TripModel(f_name, photo));
         Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_LONG).show();
     }
 

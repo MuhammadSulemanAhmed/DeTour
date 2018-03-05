@@ -2,6 +2,7 @@ package com.example.suleman_pc.detour;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.suleman_pc.detour.Adapter.TripsGridAdapter;
+import com.example.suleman_pc.detour.Common.ShareData;
 import com.example.suleman_pc.detour.Helper.TripsDatabaseHandler;
 import com.example.suleman_pc.detour.Model.TripModel;
 
@@ -52,9 +54,19 @@ public class TripsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 dataModel = tripModels.get(position);
-Intent intent=new Intent(TripsActivity.this,TripDetailExpenseActivity.class);
-startActivity(intent);
+//                db.deleteAllExpense(ShareData.getInstance().current_TripId);
+//                db.deleteContact(dataModel.getID());
+
+                Intent intent=new Intent(TripsActivity.this,TripDetailExpenseActivity.class);
+//                  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+//
+                ShareData.getInstance().current_TripId = dataModel.getID();
+//                db.deleteAllExpense(ShareData.getInstance().current_TripId);
+//                db.deleteContact(dataModel.getID());
+                startActivity(intent);
 //                Toast.makeText(getApplicationContext(), String.valueOf(dataModel.getID()), Toast.LENGTH_SHORT).show();
+
             }
         });
     }

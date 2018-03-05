@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Created by suleman-pc on 3/1/2018.
  */
 
-public class TripsGridAdapter extends ArrayAdapter<TripModel> {
+public class TripsGridAdapter extends ArrayAdapter<TripModel>  {
     Context context;
     ArrayList<TripModel> mcontact;
 
@@ -30,7 +30,7 @@ public class TripsGridAdapter extends ArrayAdapter<TripModel> {
         this.mcontact= tripModel;
     }
 
-    public  class  Holder{
+    public static class  Holder{
         TextView nameFV;
         ImageView pic;
     }
