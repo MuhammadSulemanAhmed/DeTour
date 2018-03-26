@@ -13,7 +13,7 @@
         app:showAsAction="never" />
     <item android:id="@+id/item1"
         android:icon="@drawable/ic_launcher_background"
-        android:title="Add_New" >
+        android:title="Add New" >
     </item>
     <item
         android:id="@+id/Edit_Expense"

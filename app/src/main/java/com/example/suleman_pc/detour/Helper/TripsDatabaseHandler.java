@@ -27,10 +27,11 @@ public class TripsDatabaseHandler extends SQLiteOpenHelper {
     //  table TRIPS
        private static final String TABLE_TRIPS = "trips";
 
-    // Contacts Table Columns names
+    // Trips Table Columns names
     private static final String KEY_ID = "id";
-    private static final String KEY_FNAME = "fname";
-    private static final String KEY_POTO = "poto";
+    private static final String KEY_TRIP_NAME = "tname";
+    private static final String KEY_TRIP_POTO = "tpoto";
+    private static final String KEY_TRIP_DATE = "tdate";
 
     //Table Expenses
     private static final String TABLE_EXPENSES = "expenses";
@@ -51,8 +52,10 @@ public class TripsDatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE_TRIPS="CREATE TABLE " + TABLE_TRIPS + "("
                 + KEY_ID +" INTEGER PRIMARY KEY,"
-                + KEY_FNAME +" TEXT,"
-                + KEY_POTO  +" BLOB" + ")";
+                + KEY_TRIP_NAME +" TEXT,"
+                + KEY_TRIP_POTO  +" BLOB,"
+                +KEY_TRIP_DATE   +" TEXT "
+                + ")";
         String CREATE_TABLE_EXPENSE="CREATE TABLE "+TABLE_EXPENSES+"("
                 +EXPENSES_COLUMN_ID+" INTEGER PRIMARY KEY,"
                 +EXPENSES_COLUMN_NAME+" TEXT,"
@@ -90,9 +93,9 @@ public class TripsDatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values=new ContentValues();
 
-        values.put(KEY_FNAME, tripModel.getFName());
-        values.put(KEY_POTO, tripModel.getImage() );
-
+        values.put(KEY_TRIP_NAME, tripModel.getFName());
+        values.put(KEY_TRIP_POTO, tripModel.getImage() );
+        values.put(KEY_TRIP_DATE,tripModel.getDate());
 
         db.insert(TABLE_TRIPS, null, values);
         db.close();
@@ -102,6 +105,7 @@ public class TripsDatabaseHandler extends SQLiteOpenHelper {
     public void addExpenses(ExpenseModel expenseModel){
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values=new ContentValues();
+
         values.put(EXPENSES_COLUMN_NAME,expenseModel.getExpenseName());
         values.put(EXPENSES_COLUMN_DATE,expenseModel.getExpenseDate() );
         values.put(EXPENSES_COLUMN_AMOUNT,expenseModel.getExpenseAmount());
@@ -127,10 +131,10 @@ public class TripsDatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 TripModel tripModel = new TripModel();
-                tripModel.setID(Integer.parseInt(cursor.getString(0)));
-                tripModel.setFName(cursor.getString(1));
-                tripModel.setImage(cursor.getBlob(2));
-
+                tripModel.setID(Integer.parseInt(cursor.getString(cursor.getColumnIndex(KEY_ID))));
+                tripModel.setFName(cursor.getString(cursor.getColumnIndex(KEY_TRIP_NAME)));
+                tripModel.setImage(cursor.getBlob(cursor.getColumnIndex(KEY_TRIP_POTO)));
+                tripModel.setDate(cursor.getString(cursor.getColumnIndex(KEY_TRIP_DATE)));
 
                 // Adding tripModel to list
                 tripModelList.add(tripModel);
@@ -140,7 +144,41 @@ public class TripsDatabaseHandler extends SQLiteOpenHelper {
         // return contact list
         return tripModelList;
     }
-    //getting with current trip id
+//Getting Exenses Names In String[]
+    public List<String> getExpensesNames(int i){
+        List<String> expenseModelList = new ArrayList<String>();
+        String selectQuery="Select "+ EXPENSES_COLUMN_NAME + " FROM " + TABLE_EXPENSES +" where " +EXPENSES_COLUMN_TRIP_ID +" = " + i;
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery(selectQuery,null);
+        if(cursor.moveToFirst()){
+            do{
+
+                expenseModelList.add(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_NAME)));
+
+            }while (cursor.moveToNext());
+        }
+        return expenseModelList;
+    }
+    //getting Total Amount surf on trip
+    public List<String> getTotalAmount(int i) {
+        List<String> expenseModelList = new ArrayList<String>();
+        // Select All Query
+        String selectQuery = "SELECT  "+ EXPENSES_COLUMN_AMOUNT +" FROM  " + TABLE_EXPENSES + " where " + EXPENSES_COLUMN_TRIP_ID + " = " + i;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+//                ExpenseModel expenseModel = new ExpenseModel();
+
+//                expenseModel.setExpenseAmount(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_AMOUNT)));
+                expenseModelList.add(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_AMOUNT)));
+            }while (cursor.moveToNext());
+            }
+        return expenseModelList;
+    }
+
+    //getting expenses with current trip id
     public List<ExpenseModel> getExpenses(int i) {
         List<ExpenseModel> expenseModelList = new ArrayList<ExpenseModel>();
         // Select All Query
@@ -154,26 +192,22 @@ public class TripsDatabaseHandler extends SQLiteOpenHelper {
             do {
                 ExpenseModel expenseModel = new ExpenseModel();
                 expenseModel.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_ID))));
-//            tripModel.setID(Integer.parseInt(cursor.getString(0)));
                 expenseModel.setExpenseName(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_NAME)));
-//           expenseModel.setExpenseName(cursor.getString(1));
                 expenseModel.setExpenseDate(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_DATE)));
-//           expenseModel.setExpenseDate(cursor.getString(2));
                 expenseModel.setExpenseAmount(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_AMOUNT)));
-//           expenseModel.setExpenseAmount(cursor.getString(3));
                 expenseModel.setExpenseGiver(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_GIVER)));
-//           3expenseModel.setExpenseGiver(cursor.getString(4));
                 expenseModel.setTrip_id(Integer.parseInt(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_TRIP_ID))));
 
-                // Adding tripModel to list
+                // Adding expenseModel to list
                 expenseModelList.add(expenseModel);
             } while (cursor.moveToNext());
         }
 
-        // return contact list
+        // return expense list
         return expenseModelList;
     }
-//getting all Expenses
+
+         //getting all Expenses
 public List<ExpenseModel> getAllExpenses() {
     List<ExpenseModel> expenseModelList = new ArrayList<ExpenseModel>();
     // Select All Query
@@ -198,12 +232,12 @@ public List<ExpenseModel> getAllExpenses() {
 //           3expenseModel.setExpenseGiver(cursor.getString(4));
             expenseModel.setTrip_id(Integer.parseInt(cursor.getString(cursor.getColumnIndex(EXPENSES_COLUMN_TRIP_ID))));
 
-            // Adding tripModel to list
+            // Adding expenseModel to list
             expenseModelList.add(expenseModel);
         } while (cursor.moveToNext());
     }
 
-    // return contact list
+    // return complete expense list
     return expenseModelList;
 }
 
@@ -215,9 +249,9 @@ public List<ExpenseModel> getAllExpenses() {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_FNAME, tripModel.getFName());
-        values.put(KEY_POTO, tripModel.getImage());
-
+        values.put(KEY_TRIP_NAME, tripModel.getFName());
+        values.put(KEY_TRIP_POTO, tripModel.getImage());
+        values.put(KEY_TRIP_POTO,tripModel.getDate());
 
         // updating row
         return db.update(TABLE_TRIPS, values, KEY_ID + " = ?",

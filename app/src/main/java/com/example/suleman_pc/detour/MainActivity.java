@@ -197,17 +197,24 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            startActivity(intent);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_resturents) {
+            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_all_expenses) {
+            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_my_trips) {
+            Intent intent=new Intent(MainActivity.this,TripsActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_faq) {
+            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_about_detour) {
+            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

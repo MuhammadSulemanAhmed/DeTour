@@ -1,5 +1,6 @@
 package com.example.suleman_pc.detour;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -208,7 +209,8 @@ Button searchbtn,crrntLoc;
     public void onProviderDisabled(String provider) {
 
     }
-
+//changed @
+    @SuppressLint("StaticFieldLeak")
     private class GetWeather extends AsyncTask<String,Void,String>{
         ProgressDialog pd = new ProgressDialog(WeatherActivity.this);
 

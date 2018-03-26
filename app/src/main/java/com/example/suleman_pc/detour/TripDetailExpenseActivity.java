@@ -3,27 +3,24 @@ package com.example.suleman_pc.detour;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.example.suleman_pc.detour.Adapter.ExpenseAdpater;
-import com.example.suleman_pc.detour.Adapter.TripsGridAdapter;
 import com.example.suleman_pc.detour.Common.ShareData;
 import com.example.suleman_pc.detour.Helper.TripsDatabaseHandler;
 import com.example.suleman_pc.detour.Model.ExpenseModel;
-import com.example.suleman_pc.detour.Model.TripModel;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 public class TripDetailExpenseActivity extends AppCompatActivity {
 
@@ -31,14 +28,40 @@ public class TripDetailExpenseActivity extends AppCompatActivity {
     ExpenseModel dataModel;
     ExpenseAdpater data;
     ListView Iv;
+    TextView amount;
+    int temp=2;
+    Button btn_stat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_detail);
         mydb=new TripsDatabaseHandler(this);
         Iv=findViewById(R.id.listexpense);
+        amount=findViewById(R.id.total_amount);
+        btn_stat=findViewById(R.id.btn_stats);
+        btn_stat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(TripDetailExpenseActivity.this,PieChartActivity.class);
+                startActivity(intent);
+            }
+        });
         ShowRecords();
+        total();
+
+
     }
+private  void  total(){
+    ArrayList<String> array= new ArrayList<>(mydb.getTotalAmount(ShareData.getInstance().current_TripId));
+
+    int total=0;
+    for(int i=0;i<array.size();i++){
+        total =total +  Integer.parseInt(String.valueOf(array.get(i)));
+
+    }
+    amount.setText("RS: "+total);
+}
+
     private void ShowRecords() {
         final ArrayList<ExpenseModel> tripModels = new ArrayList<>(mydb.getExpenses(ShareData.getInstance().current_TripId));
         data = new ExpenseAdpater(this,tripModels);
@@ -54,6 +77,7 @@ public class TripDetailExpenseActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),""+position,Toast.LENGTH_SHORT).show();
 //                Intent intent=new Intent(TripDetailExpenseActivity.this,TripDetailExpenseActivity.class);
 //                startActivity(intent);
+
             }
         });
     }

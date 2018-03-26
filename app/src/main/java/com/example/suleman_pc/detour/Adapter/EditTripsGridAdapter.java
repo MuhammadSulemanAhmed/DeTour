@@ -19,12 +19,12 @@ import java.util.ArrayList;
  * Created by suleman-pc on 3/1/2018.
  */
 
-public class TripsGridAdapter extends ArrayAdapter<TripModel>  {
+public class EditTripsGridAdapter extends ArrayAdapter<TripModel>  {
     Context context;
     ArrayList<TripModel> mcontact;
 
 
-    public TripsGridAdapter(Context context, ArrayList<TripModel> tripModel){
+    public EditTripsGridAdapter(Context context, ArrayList<TripModel> tripModel){
         super(context, R.layout.single_trip_gridview, tripModel);
         this.context=context;
         this.mcontact= tripModel;

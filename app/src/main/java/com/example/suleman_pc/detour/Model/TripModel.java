@@ -1,5 +1,7 @@
 package com.example.suleman_pc.detour.Model;
 
+import java.sql.Date;
+
 /**
  * Created by suleman-pc on 3/1/2018.
  */
@@ -9,6 +11,7 @@ public class TripModel {
     int _id;
     String _fname;
     byte[] _img;
+    String date;
 
 
 
@@ -17,18 +20,20 @@ public class TripModel {
 
     }
     // constructor
-    public TripModel(int id, String fname, byte[] img){
+    public TripModel(int id, String fname, byte[] img,String date){
         this._id = id;
         this._fname = fname;
         this._img = img;
+        this.date=date;
 
     }
 
     // constructor
-    public TripModel(String fname, byte[] img){
+    public TripModel(String fname, byte[] img,String date){
 
         this._fname = fname;
         this._img = img;
+        this.date=date;
 
     }
 
@@ -61,5 +66,12 @@ public class TripModel {
 
     public void setImage(byte[] b){
         this._img=b;
+    }
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

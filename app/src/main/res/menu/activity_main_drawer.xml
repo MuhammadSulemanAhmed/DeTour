@@ -7,32 +7,32 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/weather_icon"
             android:title="Weather" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_resturents"
+            android:icon="@drawable/hotel_icon"
+            android:title="Resturents" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_all_expenses"
+            android:icon="@drawable/trip_icon"
+            android:title="My all Expenses " />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_my_trips"
+            android:icon="@drawable/map"
+            android:title="My Trips" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Need Help?">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_faq"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="FAQ" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_about_detour"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="About DeTour" />
         </menu>
     </item>
     <item

@@ -4,89 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.suleman_pc.detour.AddNewTripActivity"
-    android:orientation="vertical">
+    tools:context="com.example.suleman_pc.myapplication8.AddNewTripActivity"
+    android:orientation="vertical"
+    android:background="@drawable/backkk">
 
-
-    <TextView
-        android:id="@+id/textView7"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Trip Name"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="italic"/>
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chose picture"
+            android:layout_marginTop="55dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:onClick="buttonClicked"
+            android:id="@+id/pic"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginLeft="100dp"/>
+    </LinearLayout>
 
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Trip Name (*required)"
+        android:layout_margin="10dp"/>
     <EditText
-        android:id="@+id/trip_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/txt1"
         android:hint="Enter Trip Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Trip Type"
-        android:textSize="20dp"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="italic"
-        />
+        android:layout_margin="10dp"/>
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:layout_constraintVertical_bias="0.049"
         tools:layout_editor_absoluteX="0dp"
-        android:popupBackground="#FFFF99"
+        android:popupBackground="#FFFF99"/>
 
-        />
 
-    <TextView
-        android:id="@+id/tvdate"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Trip Date"
-        android:textSize="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Start date"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            />
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pick"
+            android:onClick="setDate"
+            android:layout_margin="10dp"
+            />
+    </LinearLayout>
 
-        />
-    <!--<EditText-->
-        <!--android:id="@+id/editText"-->
-        <!--android:layout_width="158dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:ems="10"-->
-        <!--android:inputType="date"-->
-        <!--tools:layout_editor_absoluteX="0dp"-->
-        <!--tools:layout_editor_absoluteY="280dp" />-->
+
     <Button
-        android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="pick"
-        android:onClick="setDate"
-        android:background="@color/colorPrimary"
-        />
-    <Button
-        android:id="@+id/add_new_trip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add new Trip"
-        android:background="@color/colorPrimary"
-        android:layout_marginLeft="150dp"/>
-
+        android:onClick="buttonClicked"
+        android:id="@+id/save"
+        android:text="Save"
+        android:layout_margin="10dp"/>
 
 
 </LinearLayout>

@@ -44,9 +44,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".LocationMapsActivity" />
         <activity
             android:name=".WeatherActivity"
@@ -59,12 +57,14 @@
         <activity
             android:name=".AddNewExpenseActivity"
             android:label="Expense Detail"
-            android:parentActivityName=".TripDetailExpenseActivity" />
-        <activity android:name=".AddNewTripActivity" />
+            android:parentActivityName=".TripDetailExpenseActivity"></activity>
+        <activity
+            android:name=".AddNewTripActivity"
+            android:parentActivityName=".TripsActivity" />
         <activity
             android:name=".TripsActivity"
             android:label="My Trips"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -74,9 +74,21 @@
         <activity android:name=".Splash_Activity">
 
         </activity>
-        <activity android:name=".ShowExpenseDetailActivity"
+        <activity
+            android:name=".ShowExpenseDetailActivity"
             android:label="Expense Detail"
-            android:parentActivityName=".TripDetailExpenseActivity"></activity>
+            android:parentActivityName=".TripDetailExpenseActivity" />
+        <activity
+            android:name=".EditTripActivity"
+            android:parentActivityName=".TripsActivity" />
+        <activity android:name=".PieChartActivity"
+            android:parentActivityName=".TripDetailExpenseActivity">
+
+        </activity>
+        <activity android:name=".Sign_up_Activity"
+            >
+
+        </activity>
     </application>
 
 </manifest>

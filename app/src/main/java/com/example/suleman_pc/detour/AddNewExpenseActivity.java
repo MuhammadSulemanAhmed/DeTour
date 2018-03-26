@@ -32,7 +32,7 @@ public class AddNewExpenseActivity extends AppCompatActivity{
   TextView giver;
   TextView date;
   TextView amount;
-  String names,dates,amounts,givers;
+  String names,dates,givers,amounts;
   Button btn;
     int trip_id;
   private TripsDatabaseHandler db;
@@ -200,7 +200,7 @@ private void getvalue(){
     private void addContact(){
         getvalue();
 
-        db.addExpenses(new ExpenseModel(names,dates,amounts,givers,ShareData.getInstance().current_TripId));
+        db.addExpenses(new ExpenseModel(names,givers,dates,amounts,ShareData.getInstance().current_TripId));
         Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_LONG).show();
         Intent intent=new Intent(AddNewExpenseActivity.this,TripDetailExpenseActivity.class);
         startActivity(intent);

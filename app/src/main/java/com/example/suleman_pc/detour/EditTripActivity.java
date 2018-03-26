@@ -26,9 +26,10 @@ import com.example.suleman_pc.detour.Helper.TripsDatabaseHandler;
 import com.example.suleman_pc.detour.Model.TripModel;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 
-public class AddNewTripActivity extends AppCompatActivity {
+public class EditTripActivity extends AppCompatActivity {
 
     private GridView lv;
     private TripsGridAdapter data;
@@ -39,6 +40,7 @@ public class AddNewTripActivity extends AppCompatActivity {
     private String f_name;
     private String t_date;
     private String t_type;
+    private byte[] pics;
     private Bitmap bp;
     private byte[] photo;
     private Calendar calendar;
@@ -53,15 +55,15 @@ public class AddNewTripActivity extends AppCompatActivity {
 
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_trip);
+        setContentView(R.layout.activity_edit_trip);
         //Instantiate database handler
         db = new TripsDatabaseHandler(this);
+        final ArrayList<TripModel> tripModels = new ArrayList<>(db.getAllContacts());
 
-        lv = (GridView) findViewById(R.id.list1);
+
         pic = (ImageView) findViewById(R.id.pic);
         fname = (EditText) findViewById(R.id.txt1);
 
@@ -69,6 +71,12 @@ public class AddNewTripActivity extends AppCompatActivity {
 
         //Date Picker and show
         dateView = findViewById(R.id.tvdate);
+//        f_name=dataModel.getFName();
+//        fname.setText(f_name);
+//        t_date=dataModel.getDate();
+//        dateView.setText(t_date);
+//        pics=dataModel.getImage();
+//        pic.setImageBitmap(pics);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
@@ -144,18 +152,12 @@ public class AddNewTripActivity extends AppCompatActivity {
 
             case R.id.save:
 
-                if(fname.getText().toString().trim().equals("") ){
-                    Toast.makeText(getApplicationContext(),"Please enter trip name", Toast.LENGTH_LONG).show();
-                }
-                else if( bp == null){
-                    Toast.makeText(getApplicationContext(),"Please add the picture ", Toast.LENGTH_LONG).show();
-
-                }
-                else{
+                if(fname.getText().toString().trim().equals("")){
+                    Toast.makeText(getApplicationContext(),"Name edit text is empty, Enter name", Toast.LENGTH_LONG).show();
+                }  else{
                     addContact();
-                    Intent intent=new Intent(AddNewTripActivity.this,TripsActivity.class);
+                    Intent intent=new Intent(EditTripActivity.this,TripsActivity.class);
                     startActivity(intent);
-                    this.finish();
                 }
 
                 break;

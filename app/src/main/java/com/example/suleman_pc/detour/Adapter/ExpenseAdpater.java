@@ -1,20 +1,15 @@
 package com.example.suleman_pc.detour.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import com.example.suleman_pc.detour.Model.ExpenseModel;
-import com.example.suleman_pc.detour.Model.TripModel;
 import com.example.suleman_pc.detour.R;
 
 import java.util.ArrayList;
@@ -25,13 +20,13 @@ import java.util.ArrayList;
 
 public class ExpenseAdpater extends ArrayAdapter<ExpenseModel> {
     Context context;
-    ArrayList<ExpenseModel> mcontact;
+    ArrayList<ExpenseModel> mexpenses;
 
 
     public ExpenseAdpater(Context context, ArrayList<ExpenseModel> tripModel){
         super(context, R.layout.single_expense_layout, tripModel);
         this.context=context;
-        this.mcontact= tripModel;
+        this.mexpenses = tripModel;
     }
 
     public  class  Holder{
@@ -39,7 +34,6 @@ public class ExpenseAdpater extends ArrayAdapter<ExpenseModel> {
         TextView date;
         TextView amount;
         TextView giver;
-
     }
 
     @NonNull
@@ -49,27 +43,19 @@ public class ExpenseAdpater extends ArrayAdapter<ExpenseModel> {
 
         ExpenseModel data = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
-
        Holder viewHolder; // view lookup cache stored in tag
-
         if (convertView == null) {
-
-
            viewHolder = new Holder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.single_expense_layout, parent, false);
-
             viewHolder.name = convertView.findViewById(R.id.expense_name);
             viewHolder.date = convertView.findViewById(R.id.expense_date);
             viewHolder.amount=convertView.findViewById(R.id.expense_amount);
             viewHolder.giver=convertView.findViewById(R.id.expense_giver);
-
-
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (Holder) convertView.getTag();
         }
-
 
         assert data != null;
         viewHolder.name.setText(data.getExpenseName());
@@ -77,13 +63,10 @@ public class ExpenseAdpater extends ArrayAdapter<ExpenseModel> {
         viewHolder.amount.setText(data.getExpenseAmount());
         viewHolder.giver.setText(data.getExpenseGiver());
 
-//        viewHolder.pic.setImageBitmap(convertToBitmap(data.getImage()));
-
-
         // Return the completed view to render on screen
         return convertView;
     }
-    //get bitmap image from byte array
+
 
 
 
