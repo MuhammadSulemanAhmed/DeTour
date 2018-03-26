@@ -44,7 +44,13 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".LocationMapsActivity" />
         <activity
             android:name=".WeatherActivity"
@@ -65,11 +71,8 @@
             android:name=".TripsActivity"
             android:label="My Trips"
             android:parentActivityName=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".Splash_Activity">
 
@@ -89,6 +92,14 @@
             >
 
         </activity>
+        <activity android:name=".Input_Note_DataActivity"
+            android:parentActivityName=".NotePadActivity"
+            />
+        <activity android:name=".NotePadActivity"
+            android:parentActivityName=".MainActivity"
+            />
+        <activity android:name=".NoteViewActivity"
+            android:parentActivityName=".NotePadActivity"/>
     </application>
 
 </manifest>

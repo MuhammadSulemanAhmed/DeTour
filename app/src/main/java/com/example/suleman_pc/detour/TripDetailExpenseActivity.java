@@ -65,13 +65,10 @@ private  void  total(){
     private void ShowRecords() {
         final ArrayList<ExpenseModel> tripModels = new ArrayList<>(mydb.getExpenses(ShareData.getInstance().current_TripId));
         data = new ExpenseAdpater(this,tripModels);
-
         Iv.setAdapter(data);
-
         Iv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 dataModel = tripModels.get(position);
 //                mydb.deleteExpense(dataModel.getId());
                 Toast.makeText(getApplicationContext(),""+position,Toast.LENGTH_SHORT).show();

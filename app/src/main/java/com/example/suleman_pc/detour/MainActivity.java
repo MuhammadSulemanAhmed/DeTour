@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     ImageView imMap;
     ImageView imWeather;
     ImageView trip_expense;
+    ImageView notes;
 
 
 
@@ -111,6 +112,16 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+        //clicklistner for notes
+        notes=findViewById(R.id.notes);
+        notes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,NotePadActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
     private ArrayList<ImageModel> populateList(){
 
