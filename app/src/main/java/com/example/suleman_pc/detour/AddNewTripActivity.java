@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.suleman_pc.detour.Adapter.TripsGridAdapter;
-import com.example.suleman_pc.detour.Helper.TripsDatabaseHandler;
+import com.example.suleman_pc.detour.NearbyModel.Helper.TripsDatabaseHandler;
 import com.example.suleman_pc.detour.Model.TripModel;
 
 import java.io.ByteArrayOutputStream;

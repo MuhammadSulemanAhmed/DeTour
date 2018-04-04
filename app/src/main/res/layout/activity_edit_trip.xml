@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.suleman_pc.myapplication8.AddNewTripActivity"
+    tools:context="com.example.suleman_pc.detour.EditTripActivity"
     android:orientation="vertical"
     android:background="@drawable/backkk">
 
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:onClick="buttonClicked"
         android:id="@+id/save"
-        android:text="Save"
+        android:text="Update"
         android:layout_margin="10dp"/>
 
 

@@ -1,18 +1,11 @@
 package com.example.suleman_pc.detour;
 
-import android.app.AlertDialog;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.GridView;
 import android.widget.TextView;
 
-import com.example.suleman_pc.detour.Adapter.TripsGridAdapter;
-import com.example.suleman_pc.detour.Helper.ExpenseDBHealper;
-import com.example.suleman_pc.detour.Helper.TripsDatabaseHandler;
-import com.example.suleman_pc.detour.Model.TripModel;
-
-import java.util.ArrayList;
+import com.example.suleman_pc.detour.NearbyModel.Helper.ExpenseDBHealper;
+import com.example.suleman_pc.detour.NearbyModel.Helper.TripsDatabaseHandler;
 
 public class ShowExpenseDetailActivity extends AppCompatActivity {
     TextView name;

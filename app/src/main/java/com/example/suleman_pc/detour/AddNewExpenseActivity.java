@@ -1,25 +1,16 @@
 package com.example.suleman_pc.detour;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.suleman_pc.detour.Common.ShareData;
-import com.example.suleman_pc.detour.Helper.ExpenseDBHealper;
-import com.example.suleman_pc.detour.Helper.TripsDatabaseHandler;
+import com.example.suleman_pc.detour.Common1.ShareData;
+import com.example.suleman_pc.detour.NearbyModel.Helper.TripsDatabaseHandler;
 import com.example.suleman_pc.detour.Model.ExpenseModel;
-import com.example.suleman_pc.detour.Model.TripModel;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * Created by suleman-pc on 2/20/2018.
@@ -57,7 +48,25 @@ public class AddNewExpenseActivity extends AppCompatActivity{
 btn.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
+//        names=name.getText().toString();
+        dates=date.getText().toString();
+//        amounts=amount.getText().toString();
+//        givers=giver.getText().toString();
+        if(name.getText().toString().trim().equals("")){
+            Toast.makeText(getApplicationContext(),"Please enter expense name",Toast.LENGTH_SHORT).show();
+        }
+        else if(date.getText().toString().trim().equals("")){
+            Toast.makeText(getApplicationContext(),"Please enter expense Date",Toast.LENGTH_SHORT).show();
+        }
+        else if(amount.getText().toString().trim().equals("")){
+            Toast.makeText(getApplicationContext(),"Please enter expense Amount",Toast.LENGTH_SHORT).show();
+        }
+//        else if(giver.getText().toString().trim().equals("")){
+//            Toast.makeText(getApplicationContext(),"Please enter expense Date",Toast.LENGTH_SHORT).show();
+//        }
+        else {
         addContact();
+        }
 //        Toast.makeText(this,"saved", Toast.LENGTH_SHORT).show();
 
     }

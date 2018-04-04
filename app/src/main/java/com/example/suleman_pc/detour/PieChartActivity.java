@@ -72,7 +72,11 @@ PieChart pieChart;
         legend.setForm(Legend.LegendForm.CIRCLE);
         legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
         PieData pieData=new PieData(pieDataSet);
-        pieData.setValueTextColor(Color.red(10));
+//        pieData.setValueTextColor(Color.red(10));
+//        for(int c: colours) {
+//            colours.add(c);
+//            pieChart.setEntryLabelColor(colours);
+//        }
         pieChart.setData(pieData);
         pieChart.invalidate();
 

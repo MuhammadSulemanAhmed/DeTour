@@ -44,14 +44,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".LocationMapsActivity" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WeatherActivity"
             android:label="Weather"
@@ -63,19 +56,20 @@
         <activity
             android:name=".AddNewExpenseActivity"
             android:label="Expense Detail"
-            android:parentActivityName=".TripDetailExpenseActivity"></activity>
+            android:parentActivityName=".TripDetailExpenseActivity" />
         <activity
             android:name=".AddNewTripActivity"
             android:parentActivityName=".TripsActivity" />
         <activity
             android:name=".TripsActivity"
             android:label="My Trips"
-            android:parentActivityName=".MainActivity">
-
-
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".Splash_Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ShowExpenseDetailActivity"
@@ -84,22 +78,26 @@
         <activity
             android:name=".EditTripActivity"
             android:parentActivityName=".TripsActivity" />
-        <activity android:name=".PieChartActivity"
-            android:parentActivityName=".TripDetailExpenseActivity">
-
-        </activity>
-        <activity android:name=".Sign_up_Activity"
-            >
-
-        </activity>
-        <activity android:name=".Input_Note_DataActivity"
-            android:parentActivityName=".NotePadActivity"
-            />
-        <activity android:name=".NotePadActivity"
-            android:parentActivityName=".MainActivity"
-            />
-        <activity android:name=".NoteViewActivity"
-            android:parentActivityName=".NotePadActivity"/>
+        <activity
+            android:name=".PieChartActivity"
+            android:parentActivityName=".TripDetailExpenseActivity"></activity>
+        <activity android:name=".Sign_up_Activity"></activity>
+        <activity
+            android:name=".Input_Note_DataActivity"
+            android:parentActivityName=".NotePadActivity" />
+        <activity
+            android:name=".NotePadActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".NoteViewActivity"
+            android:parentActivityName=".NotePadActivity" />
+        <activity
+            android:name=".EditExpenseActivity"
+            android:parentActivityName=".TripDetailExpenseActivity" />
+        <activity android:name=".EditNoteActivity"></activity>
+        <activity android:name=".MapsActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ViewPlaceDetailActivity"/>
     </application>
 
 </manifest>

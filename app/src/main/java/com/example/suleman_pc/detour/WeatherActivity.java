@@ -22,24 +22,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.suleman_pc.detour.Common.Api_Interface;
-import com.example.suleman_pc.detour.Common.Common;
-import com.example.suleman_pc.detour.Helper.Helper;
+import com.example.suleman_pc.detour.Common1.Common;
+import com.example.suleman_pc.detour.NearbyModel.Helper.Helper;
 import com.example.suleman_pc.detour.Model.OpenWeatherMap;
-import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
-import org.greenrobot.eventbus.EventBus;
-
-import java.io.IOException;
 import java.lang.reflect.Type;
-
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class WeatherActivity extends AppCompatActivity implements LocationListener{
     TextView txtCity, txtLastUpdate, txtDescription, txtHumidity, txtTime, txtCelsius;

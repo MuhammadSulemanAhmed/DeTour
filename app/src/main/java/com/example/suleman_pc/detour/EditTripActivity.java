@@ -15,44 +15,38 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.suleman_pc.detour.Adapter.TripsGridAdapter;
-import com.example.suleman_pc.detour.Helper.TripsDatabaseHandler;
+import com.example.suleman_pc.detour.Common1.ShareData;
+import com.example.suleman_pc.detour.NearbyModel.Helper.TripsDatabaseHandler;
 import com.example.suleman_pc.detour.Model.TripModel;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class EditTripActivity extends AppCompatActivity {
 
-    private GridView lv;
-    private TripsGridAdapter data;
-    private TripModel dataModel;
     private EditText fname;
     private ImageView pic;
-    private TripsDatabaseHandler db;
     private String f_name;
     private String t_date;
-    private String t_type;
-    private byte[] pics;
     private Bitmap bp;
     private byte[] photo;
+    private byte[] pics;
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day;
     Spinner spinnerDropDown;
+    TripModel dataModel;
     private int sid;
+    TripsDatabaseHandler dbupdate;
     String[] trip_type = {
             "",
             "Individual",
             "Group",
-
     };
 
     @Override
@@ -60,23 +54,25 @@ public class EditTripActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_trip);
         //Instantiate database handler
-        db = new TripsDatabaseHandler(this);
-        final ArrayList<TripModel> tripModels = new ArrayList<>(db.getAllContacts());
-
-
+        dbupdate = new TripsDatabaseHandler(this);
         pic = (ImageView) findViewById(R.id.pic);
         fname = (EditText) findViewById(R.id.txt1);
-
-
+       TripModel model=dbupdate.getSingleTrip(ShareData.getInstance().current_TripId);
 
         //Date Picker and show
         dateView = findViewById(R.id.tvdate);
-//        f_name=dataModel.getFName();
-//        fname.setText(f_name);
-//        t_date=dataModel.getDate();
-//        dateView.setText(t_date);
-//        pics=dataModel.getImage();
-//        pic.setImageBitmap(pics);
+
+       try{
+
+           fname.setText(model.getFName());
+        dateView.setText(model.getDate());
+        pics=model.getImage();
+           //converting byte to bitmap
+        Bitmap bitmap = BitmapFactory.decodeByteArray(pics, 0, pics.length);
+        pic.setImageBitmap(bitmap);
+       }catch (Exception e){
+           Toast.makeText(this,"nothung change",Toast.LENGTH_SHORT).show();
+       }
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
@@ -155,9 +151,10 @@ public class EditTripActivity extends AppCompatActivity {
                 if(fname.getText().toString().trim().equals("")){
                     Toast.makeText(getApplicationContext(),"Name edit text is empty, Enter name", Toast.LENGTH_LONG).show();
                 }  else{
-                    addContact();
+                    UpdateTrip();
                     Intent intent=new Intent(EditTripActivity.this,TripsActivity.class);
                     startActivity(intent);
+                    this.finish();
                 }
 
                 break;
@@ -183,12 +180,15 @@ public class EditTripActivity extends AppCompatActivity {
                     if(choosenImage !=null){
 
                         bp=decodeUri(choosenImage, 400);
-                        pic.setImageBitmap(bp);
+                       try {
+                           pic.setImageBitmap(bp);
+                       }catch (Exception e){
+                           Toast.makeText(getApplicationContext(),"Picture is not changed", Toast.LENGTH_LONG).show();
+                       }
                     }
                 }
         }
     }
-
 
     //COnvert and resize our image to 400dp for faster uploading our images to DB
     protected Bitmap decodeUri(Uri selectedImage, int REQUIRED_SIZE) {
@@ -199,10 +199,8 @@ public class EditTripActivity extends AppCompatActivity {
             BitmapFactory.Options o = new BitmapFactory.Options();
             o.inJustDecodeBounds = true;
             BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o);
-
             // The new size we want to scale to
             // final int REQUIRED_SIZE =  size;
-
             // Find the correct scale value. It should be the power of 2.
             int width_tmp = o.outWidth, height_tmp = o.outHeight;
             int scale = 1;
@@ -215,7 +213,6 @@ public class EditTripActivity extends AppCompatActivity {
                 height_tmp /= 2;
                 scale *= 2;
             }
-
             // Decode with inSampleSize
             BitmapFactory.Options o2 = new BitmapFactory.Options();
             o2.inSampleSize = scale;
@@ -226,19 +223,14 @@ public class EditTripActivity extends AppCompatActivity {
         }
         return null;
     }
-
     //Convert bitmap to bytes
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
-    private byte[] profileImage(Bitmap b){
 
+    private byte[] profileImage(Bitmap b){
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         b.compress(Bitmap.CompressFormat.PNG, 0, bos);
         return bos.toByteArray();
-
     }
-
-
-
     // function to get values from the Edittext and image
     private void getValues(){
         f_name = fname.getText().toString();
@@ -247,12 +239,9 @@ public class EditTripActivity extends AppCompatActivity {
     }
 
     //Insert data to the database
-    private void addContact(){
+    private void UpdateTrip(){
         getValues();
-
-        db.addTrips(new TripModel(f_name, photo,t_date));
-        Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_LONG).show();
+        dbupdate.updateSingleTrip(new TripModel(f_name, photo,t_date),ShareData.getInstance().current_TripId);
+        Toast.makeText(getApplicationContext(),"Updated successfully", Toast.LENGTH_LONG).show();
     }
-
-
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.suleman_pc.detour.AddNewExpenseActivity"
+    android:orientation="vertical"
+    android:background="@drawable/backkk">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expense name"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/colorPrimary"
+        />
+<EditText
+    android:id="@+id/newExpenseName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Enter Expense name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter date"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="italic"/>
+    <EditText
+        android:id="@+id/newExpenseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:hint="Date"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the given_amount "
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/colorPrimary"/>
+    <EditText
+        android:id="@+id/newExpenseAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Amount"
+        android:inputType="number"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expense Given by"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp"
+        android:textStyle="italic"/>
+    <EditText
+        android:id="@+id/newExpenseGiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Expense given by"/>
+    <Button
+        android:id="@+id/addNewExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Expense"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="150dp"/>
+    <!--android:onClick="run"-->
+</LinearLayout>

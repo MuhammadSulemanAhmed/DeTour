@@ -33,10 +33,14 @@ public class MainActivity extends AppCompatActivity
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
     private ArrayList<ImageModel> imageModelArrayList;
-    private int[] myImageList = new int[]{R.drawable.harley2, R.drawable.benz2,
-            R.drawable.benz2,R.drawable.benz2
-            ,R.drawable.benz2,R.drawable.benz2};
+    private int[] myImageList = new int[]{R.drawable.harley2,
+                                          R.drawable.logo,
+                                          R.drawable.logo,
+                                          R.drawable.harley2
+                                         ,R.drawable.logo,
+                                          R.drawable.harley2  };
     ImageView imMap;
+    ImageView nearby;
     ImageView imWeather;
     ImageView trip_expense;
     ImageView notes;
@@ -77,6 +81,17 @@ public class MainActivity extends AppCompatActivity
         imageModelArrayList = new ArrayList<>();
         imageModelArrayList = populateList();
         init();
+        //clicklistner for nearby places
+        nearby=findViewById(R.id.hotel);
+        nearby.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(MainActivity.this,MapsActivity.class);
+                startActivity(intent);
+
+            }
+        });
        //clicklistner for map
         imMap= findViewById(R.id.map_im);
         imMap.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +152,7 @@ public class MainActivity extends AppCompatActivity
     }
     private void init() {
 
-        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager = findViewById(R.id.pager);
         mPager.setAdapter(new SlidingImage_Adapter(MainActivity.this, imageModelArrayList));
 
 
@@ -159,13 +174,13 @@ public class MainActivity extends AppCompatActivity
             public void run() {
                 handler.post(Update);
             }
-        }, 5000, 5000);
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 5000, 5000);
+        }, 10000, 1000);
+//        swipeTimer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.post(Update);
+//            }
+//        }, 10000, 1000);
 
     }
 

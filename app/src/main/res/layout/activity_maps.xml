@@ -1,65 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!--android:background="#4169e1">-->
-    <TextView
-        android:id="@+id/textView8"
+    tools:context="com.example.suleman_pc.googleplaces.MapsActivity" >
+<fragment
+android:id="@+id/map"
+android:name="com.google.android.gms.maps.SupportMapFragment"
+android:layout_width="match_parent"
+android:layout_height="match_parent"/>
+
+    <android.support.design.widget.BottomNavigationView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:text="Start point" />
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@drawable/nav_selector"
+        app:itemTextColor="@drawable/nav_selector"
+        app:menu="@menu/bottom_menu"/>
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/et_end"
-        android:layout_alignBottom="@+id/et_end"
-        android:layout_alignEnd="@+id/textView8"
-        android:layout_alignRight="@+id/textView8"
-        android:text="End Point"
-        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/et_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView9"
-        android:layout_alignLeft="@+id/et_end"
-        android:layout_alignStart="@+id/et_end"
-        android:hint="Start point" />
-
-    <EditText
-        android:id="@+id/et_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView8"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
-        android:hint="End point" />
-
-    <Button
-        android:id="@+id/mapsearch"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/et_end"
-        android:text="Search" />
-
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/mapsearch"
-        tools:context="com.example.suleman_pc.detour.LocationMapsActivity" />
 </RelativeLayout>
