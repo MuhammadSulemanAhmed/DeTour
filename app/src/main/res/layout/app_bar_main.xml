@@ -11,6 +11,16 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
         >
+        <!--<android.support.design.widget.CollapsingToolbarLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="300dp"-->
+            <!--android:background="@drawable/background"-->
+            <!--app:contentScrim="@color/pink"-->
+            <!--app:expandedTitleMarginEnd="64dp"-->
+            <!--app:expandedTitleMarginStart="48dp"-->
+            <!--app:layout_scrollFlags="exitUntilCollapsed|scroll"-->
+            <!--app:title="DeTour"-->
+            <!--&gt;-->
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -18,7 +28,9 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            />
+            >
+        </android.support.v7.widget.Toolbar>
+        <!--</android.support.design.widget.CollapsingToolbarLayout>-->
 
     </android.support.design.widget.AppBarLayout>
 

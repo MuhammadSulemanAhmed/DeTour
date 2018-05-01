@@ -1,4 +1,4 @@
-package com.example.suleman_pc.detour.NearbyModel.Helper;
+package com.example.suleman_pc.detour.Helper;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.suleman_pc.detour.Adapter.TripsGridAdapter;
 import com.example.suleman_pc.detour.Common1.ShareData;
-import com.example.suleman_pc.detour.NearbyModel.Helper.TripsDatabaseHandler;
+import com.example.suleman_pc.detour.Helper.TripsDatabaseHandler;
 import com.example.suleman_pc.detour.Model.TripModel;
 
 import java.util.ArrayList;
@@ -44,6 +44,7 @@ Context context;
             public void onClick(View view) {
                 Intent intent = new Intent(TripsActivity.this, AddNewTripActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

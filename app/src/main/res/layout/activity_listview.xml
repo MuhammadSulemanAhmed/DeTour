@@ -31,7 +31,8 @@
                 android:layout_marginStart="12dp"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="text"/>
+                android:text="text"
+                android:layout_marginLeft="12dp" />
 
     </LinearLayout>
 

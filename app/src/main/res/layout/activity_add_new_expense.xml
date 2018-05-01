@@ -4,71 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.suleman_pc.detour.AddNewExpenseActivity"
+    android:background="@drawable/backkk"
     android:orientation="vertical"
-    android:background="@drawable/backkk">
+    tools:context="com.example.suleman_pc.detour.AddNewExpenseActivity">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Expense name"
-        android:textSize="20dp"
-        android:textStyle="italic"
         android:textColor="@color/colorPrimary"
-        />
-<EditText
-    android:id="@+id/newExpenseName"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Enter Expense name"
-    android:textSize="20dp"
-        style="@style/Base.Widget.AppCompat.Button.Colored"
-    android:background="@drawable/border"/>
+        android:textSize="25dp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/newExpenseName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Expense name"
+        android:textSize="20dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter date"
-        android:textSize="20dp"
         android:textColor="@color/colorPrimary"
-        android:textStyle="italic"/>
-    <EditText
-        android:id="@+id/newExpenseDate"
+        android:textSize="25dp"
+        android:textStyle="italic" />
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:hint="Date"/>
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/newExpenseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Date"
+            android:inputType="date" />
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Date"
+            android:onClick="setDate"
+            android:layout_margin="10dp"
+            />
+    </LinearLayout>
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter the given_amount "
+        android:textColor="@color/colorPrimary"
         android:textSize="20dp"
-        android:textStyle="italic"
-        android:textColor="@color/colorPrimary"/>
+        android:textStyle="italic" />
+
     <EditText
         android:id="@+id/newExpenseAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Amount"
-        android:inputType="number"
-        />
+        android:inputType="number" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Expense Given by"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
+
     <EditText
         android:id="@+id/newExpenseGiver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Expense given by"/>
+        android:hint="Expense given by" />
+
+
     <Button
         android:id="@+id/addNewExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Expense"
+        android:layout_marginLeft="150dp"
         android:background="@color/colorPrimary"
-        android:layout_marginLeft="150dp"/>
+        android:text="Add Expense" />
     <!--android:onClick="run"-->
 </LinearLayout>

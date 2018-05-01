@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +20,7 @@ import android.widget.ImageView;
 
 import com.example.suleman_pc.detour.Adapter.SlidingImage_Adapter;
 import com.example.suleman_pc.detour.Model.ImageModel;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -33,19 +33,18 @@ public class MainActivity extends AppCompatActivity
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
     private ArrayList<ImageModel> imageModelArrayList;
-    private int[] myImageList = new int[]{R.drawable.harley2,
-                                          R.drawable.logo,
-                                          R.drawable.logo,
-                                          R.drawable.harley2
-                                         ,R.drawable.logo,
-                                          R.drawable.harley2  };
+//    private int[] myImageList = new int[]{R.drawable.harley2,
+//            R.drawable.logo,
+//            R.drawable.logo,
+//            R.drawable.harley2
+//            , R.drawable.logo,
+//            R.drawable.harley2};
     ImageView imMap;
     ImageView nearby;
     ImageView imWeather;
     ImageView trip_expense;
     ImageView notes;
-
-
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,22 +77,22 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setNavigationItemSelectedListener(this);
-        imageModelArrayList = new ArrayList<>();
-        imageModelArrayList = populateList();
-        init();
+//        imageModelArrayList = new ArrayList<>();
+//        imageModelArrayList = populateList();
+//        init();
         //clicklistner for nearby places
-        nearby=findViewById(R.id.hotel);
+        nearby = findViewById(R.id.hotel);
         nearby.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                intent = new Intent(MainActivity.this,MapsActivity.class);
+                intent = new Intent(MainActivity.this, MapsActivity.class);
                 startActivity(intent);
 
             }
         });
-       //clicklistner for map
-        imMap= findViewById(R.id.map_im);
+        //clicklistner for map
+        imMap = findViewById(R.id.map_im);
         imMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,88 +100,91 @@ public class MainActivity extends AppCompatActivity
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                     startActivity(mapIntent);
+                    startActivity(mapIntent);
                 }
 
             }
         });
         //clicklistner for Trip Expense
-        trip_expense=findViewById(R.id.trip_expense);
+        trip_expense = findViewById(R.id.trip_expense);
         trip_expense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
-                intent = new Intent(MainActivity.this,TripsActivity.class);
+                intent = new Intent(MainActivity.this, TripsActivity.class);
                 startActivity(intent);
             }
         });
         //clicklistner for Weather
-        imWeather= findViewById(R.id.imWeather);
+        imWeather = findViewById(R.id.imWeather);
         imWeather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
-                intent = new Intent(MainActivity.this,WeatherActivity.class);
+                intent = new Intent(MainActivity.this, WeatherActivity.class);
                 startActivity(intent);
 
             }
         });
         //clicklistner for notes
-        notes=findViewById(R.id.notes);
+        notes = findViewById(R.id.notes);
         notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,NotePadActivity.class);
+                Intent intent = new Intent(MainActivity.this, NotePadActivity.class);
                 startActivity(intent);
             }
         });
 
     }
-    private ArrayList<ImageModel> populateList(){
-
-        ArrayList<ImageModel> list = new ArrayList<>();
-
-        for(int i = 0; i < 6; i++){
-            ImageModel imageModel = new ImageModel();
-            imageModel.setImage_drawable(myImageList[i]);
-            list.add(imageModel);
-        }
-
-        return list;
-    }
-    private void init() {
-
-        mPager = findViewById(R.id.pager);
-        mPager.setAdapter(new SlidingImage_Adapter(MainActivity.this, imageModelArrayList));
 
 
-        NUM_PAGES = imageModelArrayList.size();
-
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 10000, 1000);
+//    private ArrayList<ImageModel> populateList() {
+//
+//        ArrayList<ImageModel> list = new ArrayList<>();
+//
+//        for (int i = 0; i < 6; i++) {
+//            ImageModel imageModel = new ImageModel();
+//            imageModel.setImage_drawable(myImageList[i]);
+//            list.add(imageModel);
+//        }
+//
+//        return list;
+//    }
+//
+//    private void init() {
+//
+//        mPager = findViewById(R.id.pager);
+//        mPager.setAdapter(new SlidingImage_Adapter(MainActivity.this, imageModelArrayList));
+//
+//
+//        NUM_PAGES = imageModelArrayList.size();
+//
+//        // Auto start of viewpager
+//        final Handler handler = new Handler();
+//        final Runnable Update = new Runnable() {
+//            public void run() {
+//                if (currentPage == NUM_PAGES) {
+//                    currentPage = 0;
+//                }
+//                mPager.setCurrentItem(currentPage++, true);
+//            }
+//        };
+//        Timer swipeTimer = new Timer();
 //        swipeTimer.schedule(new TimerTask() {
 //            @Override
 //            public void run() {
 //                handler.post(Update);
 //            }
 //        }, 10000, 1000);
-
-    }
+////        swipeTimer.schedule(new TimerTask() {
+////            @Override
+////            public void run() {
+////                handler.post(Update);
+////            }
+////        }, 10000, 1000);
+//
+//    }
 
     @Override
     public void onBackPressed() {
@@ -206,14 +208,24 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        ;
+        switch (item.getItemId()) {
+//            case R.id.action_settings:
+//            break;
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
+        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
-        return super.onOptionsItemSelected(item);
+
+        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -223,23 +235,23 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_resturents) {
-            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_all_expenses) {
-            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_my_trips) {
-            Intent intent=new Intent(MainActivity.this,TripsActivity.class);
+            Intent intent = new Intent(MainActivity.this, TripsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_faq) {
-            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_about_detour) {
-            Intent intent=new Intent(MainActivity.this,WeatherActivity.class);
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             startActivity(intent);
         }
 

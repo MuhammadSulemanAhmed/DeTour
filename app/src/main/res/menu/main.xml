@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_favorite"
-        android:icon="@drawable/benz2"
-        android:title="@string/action_favorite"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item android:id="@+id/item1"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="Add New" >
-    </item>
-    <item
-        android:id="@+id/Edit_Expense"
-        android:title="Edit Expense"
-        android:orderInCategory="100"
-        />
-    <item
-        android:title="Delete Expense"
-        android:id="@+id/Delete_Expense"
-        android:orderInCategory="100"
-        />
+    <!--<item-->
+        <!--android:id="@+id/action_favorite"-->
+        <!--android:icon="@drawable/benz2"-->
+        <!--android:title="@string/action_favorite"-->
+        <!--app:showAsAction="always" />-->
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/action_settings"-->
+        <!--app:showAsAction="never" />-->
+
+<item
+    android:id="@+id/logout"
+    android:title="Logout"
+    />
 </menu>

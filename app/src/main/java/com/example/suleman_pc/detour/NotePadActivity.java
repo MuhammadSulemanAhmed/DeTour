@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.suleman_pc.detour.Adapter.NoticeAdapter;
-import com.example.suleman_pc.detour.NearbyModel.Helper.NotePadDBHelper;
+import com.example.suleman_pc.detour.Helper.NotePadDBHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;

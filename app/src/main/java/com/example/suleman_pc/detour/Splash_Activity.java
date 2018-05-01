@@ -2,13 +2,9 @@ package com.example.suleman_pc.detour;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 
 import java.util.Random;
@@ -50,7 +46,7 @@ public class Splash_Activity extends Activity {
                         waited += 100;
                     }
                     Intent intent = new Intent(Splash_Activity.this,
-                            Sign_up_Activity.class);
+                            LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     Splash_Activity.this.finish();

@@ -24,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.suleman_pc.detour.Common1.Common;
-import com.example.suleman_pc.detour.NearbyModel.Helper.Helper;
+import com.example.suleman_pc.detour.Helper.Helper;
 import com.example.suleman_pc.detour.Model.OpenWeatherMap;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.suleman_pc.detour.NearbyModel.Helper.NotePadDBHelper;
+import com.example.suleman_pc.detour.Helper.NotePadDBHelper;
 
 public class EditNoteActivity extends AppCompatActivity {
 NotePadDBHelper db;

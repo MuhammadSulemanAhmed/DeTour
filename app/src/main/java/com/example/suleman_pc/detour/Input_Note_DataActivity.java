@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.suleman_pc.detour.NearbyModel.Helper.NotePadDBHelper;
+import com.example.suleman_pc.detour.Helper.NotePadDBHelper;
 
 /**
  * Created by MD.ISRAFIL MAHMUD on 7/19/2017.
