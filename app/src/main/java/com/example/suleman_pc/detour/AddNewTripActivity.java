@@ -66,7 +66,6 @@ public class AddNewTripActivity extends AppCompatActivity {
         fname = (EditText) findViewById(R.id.txt1);
 
 
-
         //Date Picker and show
         dateView = findViewById(R.id.tvdate);
         calendar = Calendar.getInstance();
@@ -100,6 +99,7 @@ public class AddNewTripActivity extends AppCompatActivity {
         });
 
     }
+
     //date
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
@@ -128,7 +128,7 @@ public class AddNewTripActivity extends AppCompatActivity {
                     // arg1 = year
                     // arg2 = month
                     // arg3 = day
-                    showDate(arg1, arg2+1, arg3);
+                    showDate(arg1, arg2 + 1, arg3);
                 }
             };
 
@@ -137,23 +137,21 @@ public class AddNewTripActivity extends AppCompatActivity {
                 .append(month).append("/").append(year));
     }
 
-    public void buttonClicked(View v){
-        int id=v.getId();
+    public void buttonClicked(View v) {
+        int id = v.getId();
 
-        switch(id){
+        switch (id) {
 
             case R.id.save:
 
-                if(fname.getText().toString().trim().equals("") ){
-                    Toast.makeText(getApplicationContext(),"Please enter trip name", Toast.LENGTH_LONG).show();
-                }
-                else if( bp == null){
-                    Toast.makeText(getApplicationContext(),"Please add the picture ", Toast.LENGTH_LONG).show();
+                if (fname.getText().toString().trim().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Please enter trip name", Toast.LENGTH_LONG).show();
+                } else if (bp == null) {
+                    Toast.makeText(getApplicationContext(), "Please add the picture ", Toast.LENGTH_LONG).show();
 
-                }
-                else{
+                } else {
                     addContact();
-                    Intent intent=new Intent(AddNewTripActivity.this,TripsActivity.class);
+                    Intent intent = new Intent(AddNewTripActivity.this, TripsActivity.class);
                     startActivity(intent);
                     this.finish();
                 }
@@ -166,21 +164,22 @@ public class AddNewTripActivity extends AppCompatActivity {
         }
     }
 
-    public void selectImage(){
+    public void selectImage() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, 2);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch(requestCode) {
+        switch (requestCode) {
             case 2:
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Uri choosenImage = data.getData();
 
-                    if(choosenImage !=null){
+                    if (choosenImage != null) {
 
-                        bp=decodeUri(choosenImage, 400);
+                        bp = decodeUri(choosenImage, 400);
                         pic.setImageBitmap(bp);
                     }
                 }
@@ -218,8 +217,7 @@ public class AddNewTripActivity extends AppCompatActivity {
             BitmapFactory.Options o2 = new BitmapFactory.Options();
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -227,7 +225,7 @@ public class AddNewTripActivity extends AppCompatActivity {
 
     //Convert bitmap to bytes
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
-    private byte[] profileImage(Bitmap b){
+    private byte[] profileImage(Bitmap b) {
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         b.compress(Bitmap.CompressFormat.PNG, 0, bos);
@@ -236,20 +234,18 @@ public class AddNewTripActivity extends AppCompatActivity {
     }
 
 
-
     // function to get values from the Edittext and image
-    private void getValues(){
+    private void getValues() {
         f_name = fname.getText().toString();
         photo = profileImage(bp);
-        t_date=dateView.getText().toString();
+        t_date = dateView.getText().toString();
     }
 
     //Insert data to the database
-    private void addContact(){
+    private void addContact() {
         getValues();
-
-        db.addTrips(new TripModel(f_name, photo,t_date));
-        Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_LONG).show();
+        db.addTrips(new TripModel(f_name, photo, t_date));
+        Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_LONG).show();
     }
 
 

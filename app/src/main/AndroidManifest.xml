@@ -104,6 +104,7 @@
         <activity android:name=".ViewPlaceDetailActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".ProfileActivity"/>
     </application>
 
 </manifest>
