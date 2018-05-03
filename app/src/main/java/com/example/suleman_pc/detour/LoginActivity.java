@@ -32,7 +32,6 @@ public class LoginActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
         progressBar = findViewById(R.id.progressbar);
-        getWindow().setBackgroundDrawableResource(R.drawable.backk);
         mAuth = FirebaseAuth.getInstance();
         editTextemail = findViewById(R.id.editTextEmail);
         text = findViewById(R.id.btnSignup);
@@ -56,6 +55,7 @@ public class LoginActivity extends Activity {
             }
         });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
