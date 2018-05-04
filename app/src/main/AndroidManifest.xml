@@ -53,15 +53,16 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".TripDetailExpenseActivity"
-            android:label="Trip Detail"
+            android:label="Trip Details"
             android:parentActivityName=".TripsActivity" />
         <activity
             android:name=".AddNewExpenseActivity"
-            android:label="Expense Detail"
+            android:label="Add new Expense"
             android:parentActivityName=".TripDetailExpenseActivity" />
         <activity
             android:name=".AddNewTripActivity"
-            android:parentActivityName=".TripsActivity" />
+            android:parentActivityName=".TripsActivity"
+            android:label="Add new Trip"/>
         <activity
             android:name=".TripsActivity"
             android:label="My Trips"
@@ -80,7 +81,8 @@
             android:parentActivityName=".TripDetailExpenseActivity" />
         <activity
             android:name=".EditTripActivity"
-            android:parentActivityName=".TripsActivity" />
+            android:parentActivityName=".TripsActivity"
+            android:label="Edit trip"/>
         <activity
             android:name=".PieChartActivity"
             android:parentActivityName=".TripDetailExpenseActivity" />
@@ -96,7 +98,8 @@
             android:parentActivityName=".NotePadActivity" />
         <activity
             android:name=".EditExpenseActivity"
-            android:parentActivityName=".TripDetailExpenseActivity" />
+            android:parentActivityName=".TripDetailExpenseActivity"
+            android:label="Edit Expense"/>
         <activity android:name=".EditNoteActivity" />
         <activity
             android:name=".MapsActivity"

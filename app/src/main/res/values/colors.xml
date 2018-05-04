@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#4A89DC</color>
+    <color name="colorPrimaryDark">#509CEC</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#fff</color>
     <color name="black_semi_transparent">#B2000000</color>
@@ -12,4 +12,37 @@
     <color name="pink_pressed">#ec407a</color>
     <color name="blue_semi_transparent">#805677fc</color>
     <color name="blue_semi_transparent_pressed">#80738ffe</color>
+    <color name="sky_blue">#56a0d3</color>
+    <color name="light_green">#8cb811</color>
+    <color name="light_orange">#e9a820</color>
+    <color name="green">#59cb59</color>
+    <color name="blue_shade">#00c2e0</color>
+    <color name="yellow">#f0ca28</color>
+    <color name="purple">#c377e0</color>
+    <color name="darkblue">#1e5397</color>
+    <color name="colorGrapeFruit">#ED5565</color>
+    <color name="colorGrapeFruitDark">#DA4453</color>
+    <color name="colorBitterSweet">#FC6E51</color>
+    <color name="colorBitterSweetDark">#E9573F</color>
+    <color name="colorFlower">#FFCE54</color>
+    <color name="colorFlowerDark">#F68B42</color>
+    <color name="colorGrass">#A0D468</color>
+    <color name="colorGrassDark">#8CC152</color>
+    <color name="colorBlueJeans">#509CEC</color>
+    <color name="colorBlueJeansDark">#4A89DC</color>
+    <color name="colorLavander">#AC92EC</color>
+    <color name="colorLavanderDark">#967ADC</color>
+    <color name="colorMint">#48CFAD</color>
+    <color name="colorMintDark">#37BC9B</color>
+    <color name="colorAqua">#4FC1E9</color>
+    <color name="colorAquaDark">#3BAFDA</color>
+    <color name="colorPinkRose">#EC87C0</color>
+    <color name="colorPinkRoseDark">#D770AD</color>
+    <color name="colorlightwhite">#f3f4f7</color>f3f4f7
+
+
+
+
+
+
 </resources>

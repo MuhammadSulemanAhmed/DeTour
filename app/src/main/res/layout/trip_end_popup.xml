@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/trans_white_rectangle">
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="x"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_gravity="end"/>-->
+
+    <ImageView
+        android:id="@+id/popup_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/upload_icon" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip Name:" />
+
+        <TextView
+            android:id="@+id/popup_tripname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="trip name" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Date:" />
+
+        <TextView
+            android:id="@+id/popup_tripstartdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="trip date" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Date:" />
+
+        <TextView
+            android:id="@+id/popup_tripenddate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="trip end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip Cost:" />
+
+        <TextView
+            android:id="@+id/popup_tripcost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="trip cost" />
+    </LinearLayout>
+</LinearLayout>
+

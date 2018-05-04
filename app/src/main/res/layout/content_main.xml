@@ -9,112 +9,329 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.suleman_pc.detour.MainActivity"
     tools:showIn="@layout/app_bar_main">
-
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="208dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
-
+        android:layout_height="match_parent">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="240dp"-->
+                <!--android:background="@drawable/background"-->
+                <!--android:textAlignment="center"-->
+                <!--android:text="SPORT DASHBOARD"-->
+                <!--android:textSize="24sp"-->
+                <!--android:gravity="bottom"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--/>-->
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="80dp"
-                android:background="@color/pink">
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:background="@color/colorGrapeFruit"
+                    >
 
                     <ImageView
                         android:id="@+id/imWeather"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="5dp"
                         android:src="@drawable/weat" />
-
                     <TextView
-                        android:id="@+id/texstView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Map" />
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+
+                        android:background="@color/colorGrapeFruitDark"
+                        android:text="Weather"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        />
+
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:background="@color/colorBitterSweet"
+                    >
 
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/trip_expense"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:src="@drawable/trip_icon" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:background="@color/colorBitterSweetDark"
+                        android:text="Trip Expense"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        />
 
-        <android.support.v7.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="44dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/trip_expense"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/trip_icon" />
+                </LinearLayout>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+            //second Row
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <android.support.v7.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-           >
-        <ImageView
-            android:id="@+id/map_im"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/map" />
-        </android.support.v7.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:background="@color/colorFlower"
+                    >
+                    <ImageView
+                        android:id="@+id/hotel"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:src="@drawable/hhhhhh" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
 
-        <android.support.v7.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp">
+                        android:background="@color/colorFlowerDark"
+                        android:text="NearBy"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        />
 
-        <ImageView
-            android:id="@+id/hotel"
-            android:layout_width="80dp"
-            android:layout_height="126dp"
-            android:layout_alignTop="@+id/imWeather"
-            android:foregroundGravity="center"
-            android:src="@drawable/hhhhhh" />
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:background="@color/colorGrass"
+                    >
+                    <ImageView
+                        android:id="@+id/map_im"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:src="@drawable/map" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:background="@color/colorGrassDark"
+                        android:text="Map"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        />
 
-        <ImageView
-            android:id="@+id/notes"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="49dp"
-            android:src="@drawable/notes_icon" />
+                </LinearLayout>
+            </LinearLayout>
+            //Third Row
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:background="@color/colorBlueJeans"
+                    >
+                    <ImageView
+                        android:id="@+id/notes"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:src="@drawable/notes_icon" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:background="@color/colorBlueJeansDark"
+                        android:text="Notes"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:background="@color/colorLavander"
+                    >
+                    <ImageView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:src="@drawable/weat" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:background="@color/colorLavanderDark"
+                        android:text="Weather"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+            <!-- Second Row-->
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/pager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="208dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_marginTop="20dp">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="150dp"-->
+                <!--android:layout_height="150dp"-->
+                <!--android:layout_marginLeft="80dp"-->
+                <!--android:background="@color/pink">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/imWeather"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="100dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="100dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:src="@drawable/weat" />&ndash;&gt;-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/texstView7"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:text="Map" />-->
+                <!--</LinearLayout>-->
+
+            <!--</android.support.v7.widget.CardView>-->
+        <!--</LinearLayout>-->
+
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="44dp">-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+
+            <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/trip_expense"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="100dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="100dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:src="@drawable/trip_icon" />&ndash;&gt;-->
+            <!--</LinearLayout>-->
+        <!--</android.support.v7.widget.CardView>-->
+
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="60dp"-->
+           <!--&gt;-->
+        <!--<ImageView-->
+            <!--android:id="@+id/map_im"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:src="@drawable/map" />-->
+        <!--</android.support.v7.widget.CardView>-->
+
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="80dp">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/hotel"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="126dp"-->
+            <!--android:layout_alignTop="@+id/imWeather"-->
+            <!--android:foregroundGravity="center"-->
+            <!--android:src="@drawable/hhhhhh" />-->
+        <!--</android.support.v7.widget.CardView>-->
+    <!--</LinearLayout>-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/notes"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginBottom="49dp"-->
+            <!--android:src="@drawable/notes_icon" />-->
 
 
 
