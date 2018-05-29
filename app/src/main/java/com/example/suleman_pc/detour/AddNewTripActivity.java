@@ -47,10 +47,8 @@ public class AddNewTripActivity extends AppCompatActivity {
     Spinner spinnerDropDown;
     private int sid;
     String[] trip_type = {
-            "",
-            "Individual",
-            "Group",
-
+            "Individual Trip",
+            "Group Trip",
     };
 
 
@@ -90,6 +88,7 @@ public class AddNewTripActivity extends AppCompatActivity {
                 sid = spinnerDropDown.getSelectedItemPosition();
                 Toast.makeText(getBaseContext(), "You have selected Trip Type : " + trip_type[sid],
                         Toast.LENGTH_SHORT).show();
+                t_type = trip_type[sid];
             }
 
             @Override
@@ -147,13 +146,13 @@ public class AddNewTripActivity extends AppCompatActivity {
                 if (fname.getText().toString().trim().equals("")) {
                     Toast.makeText(getApplicationContext(), "Please enter trip name", Toast.LENGTH_LONG).show();
                 } else if (bp == null) {
-                    Toast.makeText(getApplicationContext(), "Please add the picture ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please add_key_startup_dialoge the picture ", Toast.LENGTH_LONG).show();
 
                 } else {
                     addContact();
                     Intent intent = new Intent(AddNewTripActivity.this, TripsActivity.class);
                     startActivity(intent);
-                    this.finish();
+                    finish();
                 }
 
                 break;
@@ -239,12 +238,13 @@ public class AddNewTripActivity extends AppCompatActivity {
         f_name = fname.getText().toString();
         photo = profileImage(bp);
         t_date = dateView.getText().toString();
+
     }
 
     //Insert data to the database
     private void addContact() {
         getValues();
-        db.addTrips(new TripModel(f_name, photo, t_date));
+        db.addTrips(new TripModel(f_name, photo, t_date, t_type));
         Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_LONG).show();
     }
 

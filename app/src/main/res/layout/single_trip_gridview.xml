@@ -6,19 +6,19 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:cardBackgroundColor="@color/cardview_shadow_end_color">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="170dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgView"
-                android:layout_width="180dp"
+                android:layout_width="170dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="0dp"
                 android:src="@mipmap/ic_launcher" />
@@ -28,15 +28,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="TRIP NAME"
-                android:textSize="20dp"
-
+                android:text="TRIP NAME and going to "
+                android:textSize="15dp"
                 android:textStyle="italic|bold" />
+            <TextView
+                android:id="@+id/trip_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="type"
+                android:layout_marginLeft="5dp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <TextView
                     android:id="@+id/trip_date"
@@ -44,7 +51,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="DATE"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"

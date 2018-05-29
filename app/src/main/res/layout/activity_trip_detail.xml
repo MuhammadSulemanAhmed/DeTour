@@ -4,79 +4,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.suleman_pc.detour.TripDetailExpenseActivity"
     android:orientation="vertical"
-    >
+    tools:context="com.example.suleman_pc.detour.TripDetailExpenseActivity">
     <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Trip Details"-->
-        <!--android:textSize="32dp"/>-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Trip Details"-->
+    <!--android:textSize="32dp"/>-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Expenses on trip :"
+            android:textColor="@color/black"
             android:textSize="25dp"
-            android:text="Expenses"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold|italic"/>
         <!--<ImageView-->
-            <!--android:id="@+id/addexpense"-->
-            <!--android:layout_marginTop="17dp"-->
-            <!--android:layout_marginLeft="220dp"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/map_bus"/>-->
+        <!--android:id="@+id/addexpense"-->
+        <!--android:layout_marginTop="17dp"-->
+        <!--android:layout_marginLeft="220dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/map_bus"/>-->
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/black" />
+    <ListView
+        android:id="@+id/listexpense"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp">
 
+    </ListView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
 
+        android:background="@android:color/black" />
 
-        <ListView
-            android:id="@+id/listexpense"
-            android:layout_width="wrap_content"
-            android:layout_height="250dp">
-
-        </ListView>
-
-
-<LinearLayout
+<android.support.v7.widget.CardView
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
+    android:layout_height="55dp"
+    android:layout_marginTop="20dp">
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total given amount "
-        android:textSize="20dp"
-        />
-    <TextView
-        android:id="@+id/total_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="total amount"
-        android:layout_marginLeft="90dp"/>
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total trip amount :"
+            android:textSize="25dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/total_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:textSize="20sp"
+            android:hint="total amount"
+            android:layout_marginStart="70dp" />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:text="Trip Stats "/>
-        <Button
-            android:id="@+id/btn_stats"
-            android:layout_marginLeft="120dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show Detail"/>
+            android:text="Trip Stats :"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp" />
+
+        <Button
+            android:id="@+id/btn_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:text="Show Detail" />
     </LinearLayout>
 
 

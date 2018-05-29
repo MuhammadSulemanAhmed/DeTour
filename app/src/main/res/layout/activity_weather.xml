@@ -4,104 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.suleman_pc.detour.WeatherActivity"
+    android:background="@drawable/weather_background"
     android:orientation="vertical"
-    android:background="@drawable/backkk">
+    tools:context="com.example.suleman_pc.detour.WeatherActivity">
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      android:weightSum="5">
-    <EditText
-        android:id="@+id/editsearch"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="3.5"
-        android:text=""
-        android:hint="Search"/>
+        android:orientation="horizontal"
+        android:weightSum="4">
 
-      <Button
-          android:id="@+id/btnsearch"
-          android:layout_width="0dp"
-          android:layout_weight="1.5"
-          android:layout_height="wrap_content"
-          android:layout_marginEnd="11dp"
-          android:layout_marginRight="11dp"
-          android:text="Search" />
-  </LinearLayout>
+        <EditText
+            android:id="@+id/editsearch"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="2.8"
+            android:background="@drawable/round_edittext_new"
+            android:focusedByDefault="true"
+            android:gravity="center"
+            android:hint="Search"
+            android:text=""
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btnsearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@color/sky_blue"
+            android:text="Search" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/current_loc"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Current Location"/>
+        android:background="@color/sky_blue"
+        android:text="Current Location"
+        />
+
+
+
     <TextView
         android:id="@+id/txtCity"
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textStyle="bold"
-        android:textSize="36sp"
         android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/txtLastUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:gravity="center"
-        />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageView"
-        android:layout_gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/txtDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/txtHumidity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/txtTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:gravity="center"
-        />
+        android:text="City Name"
+        android:textSize="22sp"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/txtCelsius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textStyle="bold"
-        android:textSize="30sp"
         android:gravity="center"
-        />
+        android:text="Degree"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_image_black_24dp" />
+
+    <TextView
+        android:id="@+id/txtLastUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="15dp"
+        android:text="Last Updated"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Description : "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Hummadity : "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Hummadity"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=" Time : "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="City Time"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -22,5 +22,8 @@
     <string name="change_city" />
     <string name="open_weather_maps_app_id" />
     <string name="action_favorite" />
+    <string name="facebook_app_id">251555698916486</string>
+    <string name="fb_login_protocol_scheme">fb251555698916486</string>
+    <string name="title_activity_tracking_map">Map</string>
 
 </resources>

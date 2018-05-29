@@ -21,23 +21,26 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ViewPlaceDetailActivity extends AppCompatActivity {
-ImageView photo;
-IGoogleAPIService mService;
-RatingBar rating;
-TextView place_address,place_name,openong_hour;
-Button btnViewOnMap;
-PlaceDetail mPlace;
+    ImageView photo;
+    IGoogleAPIService mService;
+    RatingBar rating;
+    TextView place_address, place_name, openong_hour, opening, rate;
+    Button btnViewOnMap;
+    PlaceDetail mPlace;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_place_detail);
-        mService=Common.getGoogleAPIService();
-        photo=findViewById(R.id.photo);
-        rating=findViewById(R.id.ratingBar);
-        place_address=findViewById(R.id.place_address);
-        place_name=findViewById(R.id.place_name);
-        openong_hour=findViewById(R.id.place_open_hour);
-        btnViewOnMap=findViewById(R.id.btn_on_map);
+        mService = Common.getGoogleAPIService();
+        photo = findViewById(R.id.photo);
+        rating = findViewById(R.id.ratingBar);
+        opening = findViewById(R.id.open);
+        rate = findViewById(R.id.rate);
+        place_address = findViewById(R.id.place_address);
+        place_name = findViewById(R.id.place_name);
+        openong_hour = findViewById(R.id.place_open_hour);
+        btnViewOnMap = findViewById(R.id.btn_on_map);
         //empty all view
         place_name.setText("");
         place_address.setText("");
@@ -45,43 +48,42 @@ PlaceDetail mPlace;
         btnViewOnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mapIntent= new Intent(Intent.ACTION_VIEW, Uri.parse(mPlace.getResult().getUrl()));
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mPlace.getResult().getUrl()));
                 startActivity(mapIntent);
             }
         });
-       //photo
-        if(Common.currentResult.getPhotos() != null && Common.currentResult.getPhotos().length >0)
-        {
-        Picasso.with(this)
-                .load(getPhotoofPlace(Common.currentResult.getPhotos()[0].getPhoto_reference(),1000))
-                .placeholder(R.drawable.ic_image_black_24dp)
-                .error(R.drawable.ic_error_black_24dp)
-                .into(photo);
+        //photo
+        if (Common.currentResult.getPhotos() != null && Common.currentResult.getPhotos().length > 0) {
+            Picasso.with(this)
+                    .load(getPhotoofPlace(Common.currentResult.getPhotos()[0].getPhoto_reference(), 1000))
+                    .placeholder(R.drawable.ic_image_black_24dp)
+                    .error(R.drawable.ic_error_black_24dp)
+                    .into(photo);
         }
         //rating
-        if(Common.currentResult.getRating() != null && !TextUtils.isEmpty(Common.currentResult.getRating()))
-        {
+        if (Common.currentResult.getRating() != null && !TextUtils.isEmpty(Common.currentResult.getRating())) {
             rating.setRating(Float.parseFloat(Common.currentResult.getRating()));
-        }
-        else
-        {
+        } else {
             rating.setVisibility(View.GONE);
+            rate.setVisibility(View.GONE);
         }
         //opening hour
-        if(Common.currentResult.getOpening_hours() != null)
-        {
-            openong_hour.setText("Open Now: "+Common.currentResult.getOpening_hours().getOpen_now());
-        }
-        else
-        {
+        if (Common.currentResult.getOpening_hours() != null) {
+            if (Common.currentResult.getOpening_hours().getOpen_now() == "true") {
+                openong_hour.setText("Yes");
+            } else{
+                openong_hour.setText("No");
+            }
+        } else {
             openong_hour.setVisibility(View.GONE);
+            opening.setVisibility(View.GONE);
         }
 //user service to fetch
         mService.getDetailPlaces(getPlaceDetailUrl(Common.currentResult.getPlace_id()))
                 .enqueue(new Callback<PlaceDetail>() {
                     @Override
                     public void onResponse(Call<PlaceDetail> call, Response<PlaceDetail> response) {
-                        mPlace=response.body();
+                        mPlace = response.body();
                         place_address.setText(mPlace.getResult().getFormatted_address());
                         place_name.setText(mPlace.getResult().getName());
                     }
@@ -94,18 +96,18 @@ PlaceDetail mPlace;
     }
 
     private String getPlaceDetailUrl(String place_id) {
-        StringBuilder url=new StringBuilder("https://maps.googleapis.com/maps/api/place/details/json");
-        url.append("?placeid="+place_id);
-        url.append("&key="+getResources().getString(R.string.google_maps_key));
+        StringBuilder url = new StringBuilder("https://maps.googleapis.com/maps/api/place/details/json");
+        url.append("?placeid=" + place_id);
+        url.append("&key=" + getResources().getString(R.string.google_maps_key));
         return url.toString();
     }
 
-    private String getPhotoofPlace(String photos,int maxWidth) {
-        StringBuilder url=new StringBuilder("https://maps.googleapis.com/maps/api/place/photo");
-        url.append("?maxwidth="+maxWidth);
-        url.append("&photoreference="+photos);
-        url.append("&key="+getResources().getString(R.string.google_maps_key));
-        return  url.toString();
+    private String getPhotoofPlace(String photos, int maxWidth) {
+        StringBuilder url = new StringBuilder("https://maps.googleapis.com/maps/api/place/photo");
+        url.append("?maxwidth=" + maxWidth);
+        url.append("&photoreference=" + photos);
+        url.append("&key=" + getResources().getString(R.string.google_maps_key));
+        return url.toString();
 
     }
 }

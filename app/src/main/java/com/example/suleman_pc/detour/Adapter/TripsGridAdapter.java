@@ -34,6 +34,7 @@ public class TripsGridAdapter extends ArrayAdapter<TripModel>  {
         TextView nameFV;
         ImageView pic;
         TextView date;
+        TextView type;
     }
 
     @Override
@@ -55,6 +56,7 @@ public class TripsGridAdapter extends ArrayAdapter<TripModel>  {
             viewHolder.nameFV = (TextView) convertView.findViewById(R.id.trip_name);
             viewHolder.pic = (ImageView) convertView.findViewById(R.id.imgView);
             viewHolder.date=convertView.findViewById(R.id.trip_date);
+            viewHolder.type=convertView.findViewById(R.id.trip_type);
 
 
             convertView.setTag(viewHolder);
@@ -66,6 +68,7 @@ public class TripsGridAdapter extends ArrayAdapter<TripModel>  {
         viewHolder.nameFV.setText(data.getFName());
         viewHolder.pic.setImageBitmap(convertToBitmap(data.getImage()));
         viewHolder.date.setText(data.getDate());
+        viewHolder.type.setText(data.get_type());
 
 
         // Return the completed view to render on screen

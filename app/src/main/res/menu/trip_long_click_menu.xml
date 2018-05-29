@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/edit_trip"
-        android:icon="@mipmap/plus_add"
-        android:title="Edit"
-       />
+
+        android:title="Edit" />
     <item
         android:id="@+id/delete_trip"
-        android:title="Delete"
         android:orderInCategory="100"
-        />
-    <!--<item-->
-        <!--android:id="@+id/end_trip"-->
-        <!--android:title="End Trip"-->
-        <!--android:orderInCategory="100"-->
-        <!--android:onClick="Showpopup"-->
-        <!--/>-->
+        android:title="Delete" />
+    <item
+        android:id="@+id/end_trip"
+        android:orderInCategory="100"
+        android:title="Add Members"
+        android:visible="false" />
 
 </menu>

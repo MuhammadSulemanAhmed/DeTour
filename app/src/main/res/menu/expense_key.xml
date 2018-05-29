@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/addkey"
+        android:title="Add Key for Expense" />
+    <item
+        android:id="@+id/changekey"
+        android:title="Change Key for Expense" />
+    <item
+        android:id="@+id/forgot_key"
+        android:title="Forgot Key ?" />
+
+</menu>

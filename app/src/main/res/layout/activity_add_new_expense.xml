@@ -4,40 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backkk"
     android:orientation="vertical"
     tools:context="com.example.suleman_pc.detour.AddNewExpenseActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Expense name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="Select Expense"
         android:textColor="@color/colorPrimary"
         android:textSize="25dp"
         android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/newExpenseName"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Expense name"
-        android:textSize="20dp" />
+    <Spinner
+        android:id="@+id/expenseTypeSpinner"
+        android:layout_width="200dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="2.049">
+
+    </Spinner>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter date"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="Choose date"
         android:textColor="@color/colorPrimary"
         android:textSize="25dp"
         android:textStyle="italic" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
+
         <EditText
             android:id="@+id/newExpenseDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/round_edittext_new"
+            android:gravity="center"
             android:hint="Date"
             android:inputType="date" />
 
@@ -45,17 +61,17 @@
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose Date"
-            android:onClick="setDate"
             android:layout_margin="10dp"
-            />
+            android:onClick="setDate"
+            android:text="Choose Date" />
     </LinearLayout>
-
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:text="Enter the given_amount "
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
@@ -63,32 +79,39 @@
 
     <EditText
         android:id="@+id/newExpenseAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_edittext_new"
+        android:gravity="center"
         android:hint="Amount"
         android:inputType="number" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:text="Expense Given by"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
         android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/newExpenseGiver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Expense given by" />
+
+    <Spinner
+        android:id="@+id/groupMmebersSspinner"
+        android:layout_width="200dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="15dp"/>
 
 
     <Button
         android:id="@+id/addNewExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
-        android:background="@color/colorPrimary"
+        android:layout_gravity="center"
         android:text="Add Expense" />
-    <!--android:onClick="run"-->
+
+
 </LinearLayout>

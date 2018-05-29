@@ -9,9 +9,6 @@ import java.util.ArrayList;
 public class ExpenseModel {
     private String ExpenseDate;
     private int id;
-
-
-
     private int trip_id;
     private String expenseName;
     private String expenseGiver;

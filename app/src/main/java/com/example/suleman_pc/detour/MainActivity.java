@@ -1,12 +1,9 @@
 package com.example.suleman_pc.detour;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
@@ -25,8 +22,6 @@ import android.widget.Toast;
 
 import com.example.suleman_pc.detour.Adapter.SlidingImage_Adapter;
 import com.example.suleman_pc.detour.Model.ImageModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -43,27 +38,27 @@ public class MainActivity extends AppCompatActivity
     private static int NUM_PAGES = 0;
     private ArrayList<ImageModel> imageModelArrayList;
     private int[] myImageList = new int[]{R.drawable.harley2,
-            R.drawable.logo,
-            R.drawable.logo,
-            R.drawable.harley2
-            , R.drawable.logo,
-            R.drawable.harley2};
-    ImageView imMap;
+            R.drawable.pic1,
+            R.drawable.pic1,
+            R.drawable.pic3
+            , R.drawable.pic1,
+            R.drawable.pic1};
+    ImageView imMap, headerProfile;
     ImageView nearby;
     ImageView imWeather;
-    ImageView trip_expense, userPic;
-    ImageView notes;
+    ImageView trip_expense;
+    ImageView notes,track;
     FirebaseAuth mAuth;
-    TextView userName, userEmail;
+    TextView headerName, headerEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        userPic = findViewById(R.id.userImage);
-        userName = findViewById(R.id.userName);
+
         mAuth = FirebaseAuth.getInstance();
-        loadUserInformation();
+        final FirebaseUser user = mAuth.getCurrentUser();
+//        loadUserInformation();
         //logo
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setDisplayShowHomeEnabled(true);
@@ -71,7 +66,7 @@ public class MainActivity extends AppCompatActivity
         //logo
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.mipmap.logo);
+//        toolbar.setLogo(R.mipmap.logo);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +76,27 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+//        if (user != null) {
+//            // Name, email address, and profile photo Url
+//            String name = user.getDisplayName();
+//            String email = user.getEmail();
+//            Uri photoUrl = user.getPhotoUrl();
+//            try {
+//                userName.setText(name);
+//                userEmail.setText(email);
+//                Picasso.with(this).load(photoUrl).into(profile);
+//            }catch (Exception e){
+//                e.printStackTrace();
+//                Toast.makeText(this,"Profile not found",Toast.LENGTH_SHORT).show();
+//            }
+        // Check if user's email is verified
+        boolean emailVerified = user.isEmailVerified();
 
+        // The user's ID, unique to the Firebase project. Do NOT use this value to
+        // authenticate with your backend server, if you have one. Use
+        // FirebaseUser.getIdToken() instead.
+        String uid = user.getUid();
+//        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -91,8 +106,17 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        headerProfile = header.findViewById(R.id.userImage);
+        headerName = header.findViewById(R.id.userName);
+        headerEmail = header.findViewById(R.id.userEmail);
+
+//        profile = findViewById(R.id.profilePic);
+//        userName = findViewById(R.id.dobfb);
+//        userEmail = findViewById(R.id.emailfb);
         imageModelArrayList = new ArrayList<>();
         imageModelArrayList = populateList();
+
         init();
         //clicklistner for nearby places
         nearby = findViewById(R.id.hotel);
@@ -100,7 +124,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent;
-                intent = new Intent(MainActivity.this, MapsActivity.class);
+                intent = new Intent(MainActivity.this, NearbyMapsActivity.class);
                 startActivity(intent);
 
             }
@@ -117,6 +141,14 @@ public class MainActivity extends AppCompatActivity
                     startActivity(mapIntent);
                 }
 
+            }
+        });
+        //clicklistnedr for tracking
+        track=findViewById(R.id.track);
+        track.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,TrackingMapActivity.class));
             }
         });
         //clicklistner for Trip Expense
@@ -149,25 +181,30 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
+        loadUserInformation();
     }
 
     private void loadUserInformation() {
 
-//        final FirebaseUser user = mAuth.getCurrentUser();
-//
-//        if (user != null) {
-////            if (user.getPhotoUrl() != null) {
-////                Picasso.with(this).load(user.getPhotoUrl().toString()).into(userPic);
-////            }
-//
-//            if (user.getDisplayName() != null) {
-//                userName.setText(user.getDisplayName());
-//            }
-//
-//        } else {
-//            Toast.makeText(this, "nahi ai", Toast.LENGTH_LONG).show();
-//        }
+        final FirebaseUser user = mAuth.getCurrentUser();
+
+        if (user != null) {
+            if (user.getPhotoUrl() != null) {
+                Picasso.with(MainActivity.this)
+                        .load(user.getPhotoUrl())
+                        .into(headerProfile);
+            }
+
+            if (user.getDisplayName() != null) {
+                headerName.setText(user.getDisplayName());
+            }
+            if (user.getEmail() != null) {
+                headerEmail.setText(user.getEmail());
+            }
+
+        } else {
+            Toast.makeText(this, "nahi ai", Toast.LENGTH_LONG).show();
+        }
 
 
     }
@@ -201,7 +238,7 @@ public class MainActivity extends AppCompatActivity
                 if (currentPage == NUM_PAGES) {
                     currentPage = 0;
                 }
-                mPager.setCurrentItem(currentPage++, true);
+                mPager.setCurrentItem(currentPage++, false);
             }
         };
         Timer swipeTimer = new Timer();
@@ -210,13 +247,13 @@ public class MainActivity extends AppCompatActivity
             public void run() {
                 handler.post(Update);
             }
-        }, 10000, 1000);
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 10000, 1000);
+        }, 800, 900);
+//        swipeTimer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.post(Update);
+//            }
+//        }, 80000000, 400000);
 
     }
 

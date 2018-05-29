@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.suleman_pc.detour">
 
     <uses-feature
@@ -26,7 +27,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -41,11 +42,18 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCexIMM2XQdyGRAKOEzqaOHDW1P8a5f6Ls" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".WeatherActivity"
@@ -61,18 +69,13 @@
             android:parentActivityName=".TripDetailExpenseActivity" />
         <activity
             android:name=".AddNewTripActivity"
-            android:parentActivityName=".TripsActivity"
-            android:label="Add new Trip"/>
+            android:label="Add new Trip"
+            android:parentActivityName=".TripsActivity" />
         <activity
             android:name=".TripsActivity"
             android:label="My Trips"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".Splash_Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -81,8 +84,8 @@
             android:parentActivityName=".TripDetailExpenseActivity" />
         <activity
             android:name=".EditTripActivity"
-            android:parentActivityName=".TripsActivity"
-            android:label="Edit trip"/>
+            android:label="Edit trip"
+            android:parentActivityName=".TripsActivity" />
         <activity
             android:name=".PieChartActivity"
             android:parentActivityName=".TripDetailExpenseActivity" />
@@ -98,16 +101,31 @@
             android:parentActivityName=".NotePadActivity" />
         <activity
             android:name=".EditExpenseActivity"
-            android:parentActivityName=".TripDetailExpenseActivity"
-            android:label="Edit Expense"/>
+            android:label="Edit Expense"
+            android:parentActivityName=".TripDetailExpenseActivity" />
         <activity android:name=".EditNoteActivity" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".NearbyMapsActivity"
+            android:label="NearBy"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".ViewPlaceDetailActivity" />
+        <activity
+            android:name=".ViewPlaceDetailActivity"
+            android:label="Detail"
+            android:parentActivityName=".NearbyMapsActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".Main2Activity"></activity>
-        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".AddTripMemberActivity"
+            android:label="Group Member&apos;s"
+            android:parentActivityName=".TripsActivity" />
+        <activity
+            android:name=".TrackingMapActivity"
+            android:label="@string/title_activity_tracking_map"
+            android:parentActivityName=".MainActivity">
+
+
+        </activity>
     </application>
 
 </manifest>

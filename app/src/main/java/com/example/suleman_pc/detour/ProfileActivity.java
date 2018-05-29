@@ -1,6 +1,7 @@
 package com.example.suleman_pc.detour;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -26,6 +27,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,6 +46,7 @@ public class ProfileActivity extends Activity {
     ProgressBar progressBar;
     String profileImageUrl;
     FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,60 +58,48 @@ public class ProfileActivity extends Activity {
         imageView = findViewById(R.id.imageView);
         progressBar = findViewById(R.id.progressbar);
         textView = findViewById(R.id.textViewVerified);
+        progressDialog=new ProgressDialog(this);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showImageChooser();
             }
         });
-        loadUserInformation();
         findViewById(R.id.buttonSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveUserInformation();
+                progressDialog.setMessage("Saving Profile...");
+                progressDialog.show();
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mAuth.getCurrentUser() == null) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        }
-    }
-
-    private void loadUserInformation() {
         final FirebaseUser user = mAuth.getCurrentUser();
-
-        if (user != null) {
-            if (user.getPhotoUrl() != null) {
-                Picasso.with(this).load(user.getPhotoUrl().toString()).into(imageView);
-            }
-
-            if (user.getDisplayName() != null) {
-                editText.setText(user.getDisplayName());
-            }
-
-            if (user.isEmailVerified()) {
-                textView.setText("Email Verified");
-            } else {
-                textView.setText("Email Not Verified (Click to Verify)");
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(ProfileActivity.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
-            }
+        if (user.isEmailVerified()) {
+            textView.setText("Email Verified");
+        } else {
+            textView.setText("Email Not Verified (Click to Verify)");
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(ProfileActivity.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
         }
     }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        if (mAuth.getCurrentUser() == null) {
+//            finish();
+//            startActivity(new Intent(this, MainActivity.class));
+//        }
+//    }
 
 
     private void saveUserInformation() {
@@ -124,7 +116,7 @@ public class ProfileActivity extends Activity {
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null && profileImageUrl != null) {
-            UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
+            final UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(displayName)
                     .setPhotoUri(Uri.parse(profileImageUrl))
                     .build();
@@ -134,7 +126,9 @@ public class ProfileActivity extends Activity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
+                                progressDialog.dismiss();
                                 finish();
+                                addUsertoDatabase();
                                 Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(ProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
@@ -192,6 +186,7 @@ public class ProfileActivity extends Activity {
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -209,5 +204,22 @@ public class ProfileActivity extends Activity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Profile Image"), CHOOSE_IMAGE);
+    }
+    private void addUsertoDatabase() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userId=user.getUid();
+        String userName=user.getDisplayName();
+        String userEmail=user.getEmail();
+        double lati=0;
+        double longi=0;
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("users");
+//        myRef.setValue("DeTour");
+        database.getReference("App_Title").setValue("DeTour");
+        myRef.child(userId).child("name").setValue(userName);
+        myRef.child(userId).child("email").setValue(userEmail);
+        myRef.child(userId).child("latitude").setValue(lati);
+        myRef.child(userId).child("longitude").setValue(longi);
+        myRef.child(userId).child("ShareLocation").setValue("false");
     }
 }

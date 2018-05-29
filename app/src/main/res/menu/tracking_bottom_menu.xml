@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/current_location"
+        android:enabled="true"
+        android:title="Current Location"
+        android:icon="@drawable/ic_person_pin_circle_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+    <item
+    android:id="@+id/circle"
+    android:enabled="true"
+    android:title="My Circles"
+    android:icon="@drawable/ic_my_circle_work_black_24dp"
+    app:showAsAction="ifRoom"
+    />
+    <item
+        android:id="@+id/create_circle"
+        android:enabled="true"
+        android:title="Create Circle"
+        android:icon="@drawable/ic_add_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/track_friend"
+        android:enabled="true"
+        android:title="Track Friend"
+        android:icon="@drawable/ic_track_within_a_station_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/join_circle"
+        android:enabled="true"
+        android:title="Join Circle"
+        android:icon="@drawable/ic_join_circle_add_black_24dp"
+        app:showAsAction="ifRoom"
+        />
+</menu>

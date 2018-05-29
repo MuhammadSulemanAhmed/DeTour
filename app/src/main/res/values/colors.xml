@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#509CEC</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#fff</color>
-    <color name="black_semi_transparent">#B2000000</color>
+    <color name="black">#B2000000</color>
     <color name="background">#e5e5e5</color>
     <color name="half_black">#808080</color>
     <color name="white_pressed">#f1f1f1</color>
@@ -39,10 +39,6 @@
     <color name="colorPinkRose">#EC87C0</color>
     <color name="colorPinkRoseDark">#D770AD</color>
     <color name="colorlightwhite">#f3f4f7</color>f3f4f7
-
-
-
-
 
 
 </resources>

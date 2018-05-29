@@ -60,7 +60,7 @@ public class ExpenseAdpater extends ArrayAdapter<ExpenseModel> {
         assert data != null;
         viewHolder.name.setText(data.getExpenseName());
         viewHolder.date.setText(data.getExpenseDate());
-        viewHolder.amount.setText(data.getExpenseAmount());
+        viewHolder.amount.setText("RS: "+data.getExpenseAmount());
         viewHolder.giver.setText(data.getExpenseGiver());
 
         // Return the completed view to render on screen

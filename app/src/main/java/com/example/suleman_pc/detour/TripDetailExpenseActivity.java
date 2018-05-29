@@ -34,6 +34,7 @@ public class TripDetailExpenseActivity extends AppCompatActivity implements Popu
     TextView amount;
     int temp = 2;
     Button btn_stat;
+    int total = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class TripDetailExpenseActivity extends AppCompatActivity implements Popu
 
     private void total() {
         ArrayList<String> array = new ArrayList<>(mydb.getTotalAmount(ShareData.getInstance().current_TripId));
-        int total = 0;
+
         for (int i = 0; i < array.size(); i++) {
             if (array.get(i) != null) {
                 total = total + Integer.parseInt(String.valueOf(array.get(i)));
@@ -94,23 +95,26 @@ public class TripDetailExpenseActivity extends AppCompatActivity implements Popu
     public void Showpopup(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
         popupMenu.setOnMenuItemClickListener(this);
-        popupMenu.inflate(R.menu.trip_long_click_menu);
+        popupMenu.inflate(R.menu.expense_menu);
         popupMenu.show();
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.edit_trip:
+            case R.id.edit_expense:
                 String id = String.valueOf(dataModel.getId());
                 Intent intent = new Intent(TripDetailExpenseActivity.this, EditExpenseActivity.class);
                 intent.putExtra("expense_id", id);
                 startActivity(intent);
+                break;
             case R.id.delete_trip:
                 dailog();
+                break;
             default:
                 return false;
         }
+        return false;
 
     }
 
@@ -146,6 +150,8 @@ public class TripDetailExpenseActivity extends AppCompatActivity implements Popu
     public void delete() {
 
         mydb.deleteSingleExpense(dataModel.getId());
+        data.remove(dataModel);
+        data.notifyDataSetChanged();
         Intent refresh = new Intent(this, TripDetailExpenseActivity.class);
         startActivity(refresh);
         this.finish();
